@@ -552,10 +552,8 @@ namespace System.Windows.Media
             InternalRemove(visual);
         }
 
-        private void InternalRemove(Visual visual)
+        private void InternalRemove(Visual visual, int indexToRemove = -1)
         {
-            int indexToRemove = -1;
-
             if (visual != null)
             {
                 if (visual._parent != _owner)
@@ -573,14 +571,17 @@ namespace System.Windows.Media
             }
             else
             {
-                // This is the case where visual == null. We then remove the first null
-                // entry.
-                for (int i = 0; i < _size; i++)
+                if (indexToRemove == -1)
                 {
-                    if (_items[i] == null)
+                    // This is the case where visual == null. We then remove the first null
+                    // entry.
+                    for (int i = 0; i < _size; i++)
                     {
-                        indexToRemove = i;
-                        break;
+                        if (_items[i] == null)
+                        {
+                            indexToRemove = i;
+                            break;
+                        }
                     }
                 }
             }
@@ -775,7 +776,7 @@ namespace System.Windows.Media
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            InternalRemove(_items[index]);
+            InternalRemove(_items[index], index);
         }
 
 
