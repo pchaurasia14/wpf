@@ -93,10 +93,23 @@
   <ItemGroup>
     <FileNamesExcludedFromPackaging Include="ijwhost.dll" />
   </ItemGroup>
+
+  <!-- <Target Name="EnsureWindowsBaseDefine" BeforeTargets="AddWindowsBaseDefine" Condition="'@(_WindowsBaseReference->Count())' != '1'" >
+    <Message Text="Total count - '@(_WindowsBaseReference->Count())'. Hence adding manually." />
+    <ItemGroup>
+      <ProjectReference Include="$(WpfSourceDir)WindowsBase\WindowsBase.csproj">
+        <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+        <OutputItemType>_WindowsBaseReference</OutputItemType>
+      </ProjectReference>
+    </ItemGroup>
+  </Target> -->
+
   <Target Name="AddWindowsBaseDefine" AfterTargets="ResolveProjectReferences">
-    <Error Text="Unexpected result from _WindowsBaseReference" Condition="'@(_WindowsBaseReference->Count())' != '1'" />
+    <Message Text="Total count - '@(_ResolvedNativeProjectReferencePaths->Count())'" />
+    <!-- <Message Text="All project references - '@(ProjectReference)'" /> -->
+    <Message Text="All project references - '@(_ResolvedNativeProjectReferencePaths)'" />
     <PropertyGroup>
-      <_windowsBasePath>%(_WindowsBaseReference.FullPath)</_windowsBasePath>
+      <_windowsBasePath>%(_ResolvedNativeProjectReferencePaths.FullPath)</_windowsBasePath>
     </PropertyGroup>
     <ItemGroup>
       <CLCompile>

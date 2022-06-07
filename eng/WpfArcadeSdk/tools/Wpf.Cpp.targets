@@ -355,6 +355,39 @@ using namespace System::Runtime::Versioning;
      </ItemGroup>
   </Target>
 
+   <Target Name="DedupPackageRefs"
+          BeforeTargets="CollectPackageReferences"
+          Returns="%40(PackageReference)">
+      <Message Text="Custom hook for bypassing duplicate packagereference issue" />
+      <!--<CheckForDuplicateNuGetItemsTask
+          Condition="'$(DisableCheckingDuplicateNuGetItems)' != 'true' "
+          Items="@(PackageReference)"
+          ItemName="PackageReference"
+          LogCode="NU1504"
+          MSBuildProjectFullPath="$(MSBuildProjectFullPath)"
+          TreatWarningsAsErrors="'false'"
+          WarningsAsErrors="'false'"
+          NoWarn="'$(NoWarn)'"
+          ContinueOnError="$(CollectPackageReferencesContinueOnError)"
+        >
+        <Output TaskParameter="DeduplicatedItems" ItemName="DeduplicatedPackageReferences" />
+      </CheckForDuplicateNuGetItemsTask>-->
+
+    <Message Text="@(PackageReference)" />
+ 
+    <ItemGroup>
+        <PackageReference Remove="Microsoft.NETCore.Platforms" />
+        
+        <PackageReference Include="Microsoft.NETCore.Platforms" 
+                      Version="$(MicrosoftNETCorePlatformsVersion)" />
+    </ItemGroup>  
+ 
+    <!--<ItemGroup Condition="'@(DeduplicatedPackageReferences)' != ''">
+      <PackageReference Remove="@(PackageReference)" />
+      <PackageReference Include="@(DeduplicatedPackageReferences)" />
+    </ItemGroup> -->
+  </Target>
+
 <Target
     Name="IdentifyNugetReferences"
     AfterTargets="ResolveAssemblyReferences"
