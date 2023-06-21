@@ -1570,15 +1570,9 @@ namespace Microsoft.Win32
                     return String.Empty;
                 }
 
-                // Determine the length of the text we want to retrieve...
-                int textLen = UnsafeNativeMethods.GetWindowTextLength(new HandleRef(this, _hwndFileDialog));
-                // then make a StringBuilder...
-                StringBuilder sb = new StringBuilder(textLen + 1);
+                StringBuilder sb = new StringBuilder();
                 // and call GetWindowText to fill it up...
-                UnsafeNativeMethods.GetWindowText(new HandleRef(this, _hwndFileDialog),
-                           sb /*target string*/,
-                           sb.Capacity /* max # of chars to copy before truncation occurs */
-                           );
+                UnsafeNativeMethods.GetWindowText(new HandleRef(this, _hwndFileDialog),sb /*target string*/);
                 // then return the results.
                 return sb.ToString();
             }

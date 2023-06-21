@@ -44,12 +44,9 @@ namespace System.Windows.Automation.Peers
 
                 if(!window.IsSourceWindowNull)
                 {
-                    StringBuilder sb = new StringBuilder(512);
-                    UnsafeNativeMethods.GetWindowText(new HandleRef(null, window.CriticalHandle), sb, sb.Capacity);
-                    name = sb.ToString();
-
-                    if (name == null)
-                        name = string.Empty;
+                    StringBuilder sb = new StringBuilder();
+                    UnsafeNativeMethods.GetWindowText(new HandleRef(null, window.CriticalHandle), sb);
+                    name = sb?.ToString() ?? string.Empty;
                 }
             }
 
