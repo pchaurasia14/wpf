@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "Ignorer la restauration",
   "postActions/restore/description": "Restaurez les packages NuGet requis par ce projet.",
   "postActions/restore/manualInstructions/default/text": "Exécuter « dotnet restore »",
-  "postActions/editor/description": "Ouvre Class1.vb dans l’éditeur"
+  "postActions/editor/description": "Ouvre Class1.vb dans l’éditeur",
+  "postActions/editor/manualInstructions/default/text": ""
 }

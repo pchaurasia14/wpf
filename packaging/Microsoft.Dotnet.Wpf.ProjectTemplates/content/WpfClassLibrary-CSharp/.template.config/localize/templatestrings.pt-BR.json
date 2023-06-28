@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Habilitar anulável",
   "postActions/restore/description": "Restaura os pacotes do NuGet exigidos por este projeto.",
   "postActions/restore/manualInstructions/default/text": "Executar 'dotnet restore'",
-  "postActions/editor/description": "Abrir Class1.cs no editor"
+  "postActions/editor/description": "Abrir Class1.cs no editor",
+  "postActions/editor/manualInstructions/default/text": ""
 }

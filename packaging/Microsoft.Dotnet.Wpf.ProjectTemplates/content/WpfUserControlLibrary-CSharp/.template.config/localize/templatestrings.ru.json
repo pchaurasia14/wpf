@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Включить допустимость значений NULL",
   "postActions/restore/description": "Восстановление пакетов NuGet, необходимых для этого проекта.",
   "postActions/restore/manualInstructions/default/text": "Выполнить команду \"dotnet restore\"",
-  "postActions/editor/description": "Открытие UserControl1.xaml в редакторе"
+  "postActions/editor/description": "Открытие UserControl1.xaml в редакторе",
+  "postActions/editor/manualInstructions/default/text": ""
 }

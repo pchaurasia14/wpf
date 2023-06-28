@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "Pomiń przywracanie",
   "postActions/restore/description": "Przywróć pakiety NuGet wymagane przez ten projekt.",
   "postActions/restore/manualInstructions/default/text": "Uruchom polecenie \"dotnet restore\"",
-  "postActions/editor/description": "Otwiera plik UserControl1.xaml w edytorze"
+  "postActions/editor/description": "Otwiera plik UserControl1.xaml w edytorze",
+  "postActions/editor/manualInstructions/default/text": ""
 }

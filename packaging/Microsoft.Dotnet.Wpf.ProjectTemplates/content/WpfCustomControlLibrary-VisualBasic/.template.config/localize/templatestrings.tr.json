@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "Geri yüklemeyi atla",
   "postActions/restore/description": "Bu projenin gerektirdiği NuGet paketlerini geri yükleyin.",
   "postActions/restore/manualInstructions/default/text": "'dotnet restore' çalıştır",
-  "postActions/editor/description": "Düzenleyicide CustomControl1.vb’si açar"
+  "postActions/editor/description": "Düzenleyicide CustomControl1.vb’si açar",
+  "postActions/editor/manualInstructions/default/text": ""
 }

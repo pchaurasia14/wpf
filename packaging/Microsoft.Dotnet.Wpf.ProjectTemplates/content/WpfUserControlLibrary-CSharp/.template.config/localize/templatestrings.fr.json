@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Autoriser la valeur Null",
   "postActions/restore/description": "Restaurez les packages NuGet requis par ce projet.",
   "postActions/restore/manualInstructions/default/text": "Exécuter « dotnet restore »",
-  "postActions/editor/description": "Ouvre UserControl1.xaml dans l’éditeur"
+  "postActions/editor/description": "Ouvre UserControl1.xaml dans l’éditeur",
+  "postActions/editor/manualInstructions/default/text": ""
 }

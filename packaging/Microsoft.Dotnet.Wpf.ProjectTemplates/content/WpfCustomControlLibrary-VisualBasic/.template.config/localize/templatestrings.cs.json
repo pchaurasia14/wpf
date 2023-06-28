@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "Přeskočit obnovení",
   "postActions/restore/description": "Obnoví balíčky NuGet vyžadované tímto projektem.",
   "postActions/restore/manualInstructions/default/text": "Spustit dotnet restore",
-  "postActions/editor/description": "Otevře CustomControl1.vb v editoru."
+  "postActions/editor/description": "Otevře CustomControl1.vb v editoru.",
+  "postActions/editor/manualInstructions/default/text": ""
 }

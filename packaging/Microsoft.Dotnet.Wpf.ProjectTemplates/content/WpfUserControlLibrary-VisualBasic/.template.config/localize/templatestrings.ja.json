@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "復元のスキップ",
   "postActions/restore/description": "このプロジェクトに必要な NuGet パッケージを復元します。",
   "postActions/restore/manualInstructions/default/text": "'dotnet restore' を実行する",
-  "postActions/editor/description": "エディターで UserControl1.xaml を開きます"
+  "postActions/editor/description": "エディターで UserControl1.xaml を開きます",
+  "postActions/editor/manualInstructions/default/text": ""
 }

@@ -177,7 +177,9 @@
       "id": "editor",
       "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
       "description": "Opens MainWindow.xaml in the editor",
-      "manualInstructions": [ ],
+      "manualInstructions": [
+        { "text": "" }
+       ],
       "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
       "args": {
         "files": "1;2"

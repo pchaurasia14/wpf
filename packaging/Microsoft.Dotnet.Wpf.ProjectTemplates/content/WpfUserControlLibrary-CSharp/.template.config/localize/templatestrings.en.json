@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Enable nullable",
   "postActions/restore/description": "Restore NuGet packages required by this project.",
   "postActions/restore/manualInstructions/default/text": "Run 'dotnet restore'",
-  "postActions/editor/description": "Opens UserControl1.xaml in the editor"
+  "postActions/editor/description": "Opens UserControl1.xaml in the editor",
+  "postActions/editor/manualInstructions/default/text": ""
 }

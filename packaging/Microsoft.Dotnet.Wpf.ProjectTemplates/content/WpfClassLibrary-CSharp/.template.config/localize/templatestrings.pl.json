@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Włącz dopuszczającą wartość null",
   "postActions/restore/description": "Przywróć pakiety NuGet wymagane przez ten projekt.",
   "postActions/restore/manualInstructions/default/text": "Uruchom polecenie \"dotnet restore\"",
-  "postActions/editor/description": "Otwiera plik Class1.cs w edytorze"
+  "postActions/editor/description": "Otwiera plik Class1.cs w edytorze",
+  "postActions/editor/manualInstructions/default/text": ""
 }

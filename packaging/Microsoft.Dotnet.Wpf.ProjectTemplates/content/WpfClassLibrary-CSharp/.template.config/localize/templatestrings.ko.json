@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "nullable 사용",
   "postActions/restore/description": "이 프로젝트에 필요한 NuGet 패키지를 복원합니다.",
   "postActions/restore/manualInstructions/default/text": "'dotnet restore' 실행",
-  "postActions/editor/description": "편집기에서 Class1.cs를 엽니다"
+  "postActions/editor/description": "편집기에서 Class1.cs를 엽니다",
+  "postActions/editor/manualInstructions/default/text": ""
 }

@@ -24,5 +24,6 @@
   "symbols/skipRestore/displayName": "Пропустить восстановление",
   "postActions/restore/description": "Восстановление пакетов NuGet, необходимых для этого проекта.",
   "postActions/restore/manualInstructions/default/text": "Выполнить команду \"dotnet restore\"",
-  "postActions/editor/description": "Открывает файл Class1.vb в редакторе"
+  "postActions/editor/description": "Открывает файл Class1.vb в редакторе",
+  "postActions/editor/manualInstructions/default/text": ""
 }

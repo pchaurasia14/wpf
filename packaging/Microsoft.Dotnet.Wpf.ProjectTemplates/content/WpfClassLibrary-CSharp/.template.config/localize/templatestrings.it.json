@@ -26,5 +26,6 @@
   "symbols/Nullable/displayName": "Abilita valori null",
   "postActions/restore/description": "Ripristina i pacchetti NuGet richiesti da questo progetto.",
   "postActions/restore/manualInstructions/default/text": "Esegui 'dotnet restore'",
-  "postActions/editor/description": "Apre Class1.cs nell'editor"
+  "postActions/editor/description": "Apre Class1.cs nell'editor",
+  "postActions/editor/manualInstructions/default/text": ""
 }
