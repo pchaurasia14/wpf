@@ -179,12 +179,12 @@ namespace PresentationFramework.Win11.Controls
                 return;
             }
 
-            Padding = window.WindowState switch
+            SetCurrentValue(PaddingProperty, window.WindowState switch
             {
                 WindowState.Maximized => WindowChromeNonClientFrameThickness,
                 _ => default,
-            };
-        }
+            });
+            }
 
         private void ApplyDefaultWindowBorder()
         {
@@ -196,12 +196,12 @@ namespace PresentationFramework.Win11.Controls
             _borderBrushApplied = true;
 
             // SystemParameters.WindowGlassBrush
-            _oldWindow.BorderThickness = new Thickness(1);
-            _oldWindow.BorderBrush = new SolidColorBrush(
+            _oldWindow.SetCurrentValue(System.Windows.Controls.Control.BorderThicknessProperty, new Thickness(1));
+            _oldWindow.SetCurrentValue(System.Windows.Controls.Control.BorderBrushProperty, new SolidColorBrush(
                 ApplicationTheme == ApplicationTheme.Light
                     ? Color.FromArgb(0xFF, 0x7A, 0x7A, 0x7A)
                     : Color.FromArgb(0xFF, 0x3A, 0x3A, 0x3A)
-            );
+            ));
         }
 
         private (double factorX, double factorY) GetDpi()
