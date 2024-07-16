@@ -213,7 +213,7 @@ namespace System.Windows.Input
         //------------------------------------------------------
         #region Data
 
-        private bool _settingGesture = false;
+        private bool _settingGesture;
 
         #endregion
     }

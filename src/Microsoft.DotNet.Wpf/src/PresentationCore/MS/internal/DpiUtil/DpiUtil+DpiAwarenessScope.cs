@@ -148,7 +148,7 @@ namespace MS.Internal
             /// Gets or sets the saved valued of the old DPI_AWERENESS_CONTEXT_HANDLE which will be restored
             /// when <see cref="Dispose"/> is called
             /// </summary>
-            private DpiAwarenessContextHandle OldDpiAwarenessContext { get; set; } = null;
+            private DpiAwarenessContextHandle OldDpiAwarenessContext { get; set; }
 
             /// <summary>
             /// Restores the current thread to its previous DPI_AWARENESS_CONTEXT value

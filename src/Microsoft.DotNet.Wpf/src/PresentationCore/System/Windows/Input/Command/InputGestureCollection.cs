@@ -458,7 +458,7 @@ namespace System.Windows.Input
         //------------------------------------------------------
 #region Private Fields
         private System.Collections.Generic.List<InputGesture> _innerGestureList;
-        private bool           _isReadOnly = false;
+        private bool           _isReadOnly;
 #endregion Private Fields
     }
 }

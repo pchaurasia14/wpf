@@ -45,7 +45,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// If true, we have correctly queried pointer data, false otherwise.
         /// </summary>
-        internal bool IsValid { get; private set; } = false;
+        internal bool IsValid { get; private set; }
 
         /// <summary>
         /// Standard pointer information

@@ -196,7 +196,7 @@ namespace System.Windows.Media
 
 
 
-        internal static Uri s_Source = null;
+        internal static Uri s_Source;
 
         #endregion Internal Fields
 

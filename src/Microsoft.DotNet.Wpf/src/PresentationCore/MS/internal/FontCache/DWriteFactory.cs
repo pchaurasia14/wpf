@@ -108,7 +108,7 @@ namespace MS.Internal.FontCache
         }
 
         private static Text.TextInterface.Factory _factory;
-        private static Text.TextInterface.FontCollection _systemFontCollection = null;
+        private static Text.TextInterface.FontCollection _systemFontCollection;
         private static object _systemFontCollectionLock = new object();
     }
 }

@@ -326,6 +326,6 @@ namespace System.Windows.Media.TextFormatting
             }
         }
 
-        private DWriteFontFeature[] _features = null;
+        private DWriteFontFeature[] _features;
 }
 }

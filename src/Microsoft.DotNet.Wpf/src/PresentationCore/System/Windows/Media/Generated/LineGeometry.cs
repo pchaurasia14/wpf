@@ -303,10 +303,10 @@ namespace System.Windows.Media
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
-        internal static Point s_StartPoint = new Point();
-        internal static Point s_EndPoint = new Point();
+        internal static Point s_StartPoint;
+        internal static Point s_EndPoint;
 
         #endregion Internal Fields
 

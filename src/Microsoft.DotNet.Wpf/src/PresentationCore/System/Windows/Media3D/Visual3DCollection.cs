@@ -590,9 +590,9 @@ namespace System.Windows.Media.Media3D
 
         #region Private Fields
 
-        private IVisual3DContainer _owner = null;       
-        private FrugalStructList<Visual3D> _collection = new FrugalStructList<Visual3D>();
-        private int _version = 0;
+        private IVisual3DContainer _owner;
+        private FrugalStructList<Visual3D> _collection;
+        private int _version;
 
         #endregion Private Fields
 

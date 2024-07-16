@@ -4669,7 +4669,7 @@ namespace System.Windows
         internal ContextLayoutManager.LayoutQueue.Request ArrangeRequest;
 
         // See PersistId property
-        private int _persistId = 0;
+        private int _persistId;
 
         internal static List<double> DpiScaleXValues = new List<double>(3);
         internal static List<double> DpiScaleYValues = new List<double>(3);

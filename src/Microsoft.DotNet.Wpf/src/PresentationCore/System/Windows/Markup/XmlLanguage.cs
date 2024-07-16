@@ -54,7 +54,7 @@ namespace System.Windows.Markup
         private const int InitialDictionarySize = 10;   // Three for "en-us", "en", and "", plus a few more
 
         private const int MaxCultureDepth = 32;
-        private static XmlLanguage _empty = null;
+        private static XmlLanguage _empty;
         
         private readonly string _lowerCaseTag;
         private CultureInfo _equivalentCulture;

@@ -353,11 +353,11 @@ namespace System.Windows.Media.Media3D
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal static Color s_Color = Colors.White;
         internal static Color s_AmbientColor = Colors.White;
-        internal static Brush s_Brush = null;
+        internal static Brush s_Brush;
 
         #endregion Internal Fields
 

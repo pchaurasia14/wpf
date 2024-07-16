@@ -34,7 +34,7 @@ namespace System.Windows.Media.Animation
         /// is accumulated with each repeat.  It is the end value of the path
         /// output value for the path.
         /// </summary>
-        private Vector _accumulatingVector = new Vector();
+        private Vector _accumulatingVector;
 
         #endregion
 

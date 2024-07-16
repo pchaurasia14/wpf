@@ -781,7 +781,7 @@ namespace System.Windows.Media.Media3D
 
 
         internal FrugalStructList<Material> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
 
         #endregion Internal Fields

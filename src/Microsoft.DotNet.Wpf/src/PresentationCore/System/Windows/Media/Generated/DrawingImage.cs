@@ -303,7 +303,7 @@ namespace System.Windows.Media
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
 
 

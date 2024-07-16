@@ -810,7 +810,7 @@ namespace MS.Internal.Ink.GestureRecognition
         /// <summary>
         /// IDisposable support
         /// </summary>
-        private bool                                    _disposed = false;
+        private bool                                    _disposed;
 
         /// <summary>
         /// Each NativeRecognizer instance has it's own recognizer context

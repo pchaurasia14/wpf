@@ -1130,9 +1130,9 @@ namespace System.Windows.Media
 
         private Uri _sourceUri;
 
-        private MediaClock _mediaClock = null;
+        private MediaClock _mediaClock;
 
-        private Dispatcher _dispatcher = null;
+        private Dispatcher _dispatcher;
 
         private UniqueEventHelper _newFrameHelper = new UniqueEventHelper();
         private UniqueEventHelper _mediaOpenedHelper = new UniqueEventHelper();

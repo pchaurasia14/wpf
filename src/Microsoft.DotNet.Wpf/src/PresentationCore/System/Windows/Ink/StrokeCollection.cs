@@ -836,7 +836,7 @@ namespace System.Windows.Ink
 
         // Custom 'user-defined' attributes assigned to this collection
         //  In v1, these were called Ink.ExtendedProperties
-        private ExtendedPropertyCollection _extendedProperties = null;
+        private ExtendedPropertyCollection _extendedProperties;
 
         // The private PropertyChanged event
         private PropertyChangedEventHandler _propertyChanged;

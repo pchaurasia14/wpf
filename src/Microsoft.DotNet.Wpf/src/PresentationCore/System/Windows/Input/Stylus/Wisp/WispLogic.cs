@@ -3689,8 +3689,8 @@ namespace System.Windows.Input.StylusWisp
 
         RawMouseInputReport _mouseDeactivateInputReport;
 
-        bool _inputEnabled = false;
-        bool _updatingScreenMeasurements = false;
+        bool _inputEnabled;
+        bool _updatingScreenMeasurements;
         DispatcherOperationCallback _processDisplayChanged;
         readonly object __penContextsLock = new object();
 

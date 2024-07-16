@@ -536,7 +536,7 @@ namespace MS.Internal.Ink
 
         private List<Point>             _points;
         private Rect                    _bounds                 = Rect.Empty;
-        private bool                    _incrementalLassoDirty  = false;
+        private bool                    _incrementalLassoDirty;
         private const double MinDistance = 1.0;
 
         #endregion
@@ -900,7 +900,7 @@ namespace MS.Internal.Ink
             return DoubleUtil.IsZero(findex) ? 0 : (DoubleUtil.IsOne(findex) ? 1 : findex);
         }
 
-        private bool _hasLoop                           = false;
+        private bool _hasLoop;
         private Rect _prevBounds                        = Rect.Empty;
         private static readonly double NoIntersection   = StrokeFIndices.BeforeFirst;
     }

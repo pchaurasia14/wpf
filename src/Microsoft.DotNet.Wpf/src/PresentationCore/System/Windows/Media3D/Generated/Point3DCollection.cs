@@ -764,7 +764,7 @@ namespace System.Windows.Media.Media3D
 
 
         internal FrugalStructList<Point3D> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
 
         #endregion Internal Fields

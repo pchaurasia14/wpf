@@ -907,7 +907,7 @@ namespace System.Windows.Media
 
         #region Data Members
 
-        private MediaPlayerState      _mediaPlayerState = null;
+        private MediaPlayerState      _mediaPlayerState;
 
         /// <summary>
         /// DUCE resource handle - we need to use ShareableDUCEMultiChannelResource, because clones
@@ -915,9 +915,9 @@ namespace System.Windows.Media
         /// </summary>
         internal DUCE.ShareableDUCEMultiChannelResource _duceResource = new DUCE.ShareableDUCEMultiChannelResource();
 
-        private EventHandler    _newFrameHandler = null;
+        private EventHandler    _newFrameHandler;
 
-        private bool            _needsUpdate = false;
+        private bool            _needsUpdate;
 
         #endregion
     }

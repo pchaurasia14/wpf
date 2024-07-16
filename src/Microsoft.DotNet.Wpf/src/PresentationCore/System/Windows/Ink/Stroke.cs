@@ -1106,12 +1106,12 @@ namespace System.Windows.Ink
         }
 
             // Custom attributes associated with this stroke
-        private ExtendedPropertyCollection _extendedProperties = null;
+        private ExtendedPropertyCollection _extendedProperties;
 
             // Drawing attributes associated with this stroke
-        private DrawingAttributes _drawingAttributes = null;
+        private DrawingAttributes _drawingAttributes;
 
-        private StylusPointCollection _stylusPoints = null;
+        private StylusPointCollection _stylusPoints;
 }
 
         //internal helper to determine if a matix contains invalid values

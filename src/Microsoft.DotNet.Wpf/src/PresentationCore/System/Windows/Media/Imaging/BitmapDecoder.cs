@@ -1612,16 +1612,16 @@ namespace System.Windows.Media.Imaging
         private bool _shouldCacheDecoder = true;
 
         /// flag to see if decoder should be inserted in the cache
-        private bool _isOriginalWritable = false;
+        private bool _isOriginalWritable;
 
         /// If the palette is already cached
         private bool _isPaletteCached;
 
         /// Palette
-        private BitmapPalette _palette = null;
+        private BitmapPalette _palette;
 
         /// If the ColorContext is already cached
-        private bool _isColorContextCached = false;
+        private bool _isColorContextCached;
 
         /// ColorContexts collection
         internal ReadOnlyCollection<ColorContext> _readOnlycolorContexts;
@@ -1638,7 +1638,7 @@ namespace System.Windows.Media.Imaging
         private bool _isMetadataCached;
 
         /// Thumbnail
-        private BitmapSource _thumbnail = null;
+        private BitmapSource _thumbnail;
 
         /// CodecInfo
         private BitmapCodecInfo _codecInfo;
@@ -1647,7 +1647,7 @@ namespace System.Windows.Media.Imaging
         private bool _isPreviewCached;
 
         /// Preview
-        private BitmapSource _preview = null;
+        private BitmapSource _preview;
 
         /// Frames collection
         internal List<BitmapFrame> _frames;

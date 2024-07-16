@@ -23,7 +23,7 @@ namespace System.Windows.Input
 {
     /// <summary>
     ///   AccessKeyManager object is created on demand and it is one per thread.
-    /// It attached an event handler for PostProcessInput on InputManager and expose registration and 
+    /// It attached an event handler for PostProcessInput on InputManager and expose registration and
     /// unregistration of access keys. When the access key is pressed in calls OnAccessKey method on the target element
     /// </summary>
     public sealed class AccessKeyManager
@@ -169,7 +169,7 @@ namespace System.Windows.Input
         }
 
         #endregion
-        
+
         #region Constructor
         private AccessKeyManager()
         {
@@ -179,13 +179,13 @@ namespace System.Windows.Input
         #endregion
 
         #region Properties
-        
+
         /// <summary>
         /// Access to the current context's AccessKeyManager class
         /// </summary>
         private static AccessKeyManager Current
         {
-            get 
+            get
             {
                 if (_accessKeyManager == null)
                     _accessKeyManager = new AccessKeyManager();
@@ -270,7 +270,7 @@ namespace System.Windows.Input
                         oneUIElement = false;
                     }
 
-                    // 
+                    //
                     lastWasAccessed = target.HasEffectiveKeyboardFocus;
                 }
 
@@ -337,7 +337,7 @@ namespace System.Windows.Input
         }
 
         /// <summary>
-        /// Get the list of access key targets for the sender of the keyboard event.  If sender is null, 
+        /// Get the list of access key targets for the sender of the keyboard event.  If sender is null,
         /// pretend key was pressed in the active window.
         /// </summary>
         /// <param name="sender"></param>
@@ -350,7 +350,7 @@ namespace System.Windows.Input
 
             return GetTargetsForScope(senderInfo.Scope, key, sender, senderInfo);
         }
-        
+
         private List<IInputElement> GetTargetsForScope(object scope, string key, IInputElement sender, AccessKeyInformation senderInfo)
         {
             // null scope defaults to the active window
@@ -365,20 +365,20 @@ namespace System.Windows.Input
                 }
             }
 
-            if (CoreCompatibilityPreferences.GetIsAltKeyRequiredInAccessKeyDefaultScope() && 
+            if (CoreCompatibilityPreferences.GetIsAltKeyRequiredInAccessKeyDefaultScope() &&
                 (scope is PresentationSource) && (Keyboard.Modifiers & ModifierKeys.Alt) != ModifierKeys.Alt)
             {
                 // If AltKey is required and it isnt pressed then dont match against any targets
                 return null;
             }
-            
+
             //Scoping:
             //    1) When key is pressed, find matching AKs -> S
             //    3) find scope for keyevent.Source
             //    4) find scope for everything in S. throw away those that don't match.
             //    5) Final selection uses S.  yay!
-            // 
-            // 
+            //
+            //
             List<IInputElement> possibleElements;
             lock (_keyToElements)
             {
@@ -409,7 +409,7 @@ namespace System.Windows.Input
                 }
                 else
                 {
-                    // This is the same element that sent the event so it must be in the same scope.  
+                    // This is the same element that sent the event so it must be in the same scope.
                     // Just add it to the final targets
                     if (senderInfo.target != null)
                     {
@@ -420,7 +420,7 @@ namespace System.Windows.Input
 
             return finalTargets;
         }
-        
+
         /// <summary>
         /// Returns scope for the given element.
         /// </summary>
@@ -466,9 +466,9 @@ namespace System.Windows.Input
                     source = PresentationSource.CriticalFromVisual(containingVisual);
                 }
             }
-            
+
             // NOTE: source can be null but IsTargetable(element) == true if the
-            // element is in an orphaned tree but the tree has not yet been garbage collected.  
+            // element is in an orphaned tree but the tree has not yet been garbage collected.
             return source;
         }
 
@@ -490,13 +490,13 @@ namespace System.Windows.Input
             return null;
         }
 
-        
+
         private bool IsTargetable(IInputElement element)
         {
             DependencyObject uielement = InputElement.GetContainingUIElement((DependencyObject)element);
 
             // For an element to be a valid target it must be visible and enabled
-            if (uielement != null 
+            if (uielement != null
                 && IsVisible(uielement)
                 && IsEnabled(uielement))
             {
@@ -513,7 +513,7 @@ namespace System.Windows.Input
                 Visibility visibility;
                 UIElement uiElem = element as UIElement;
                 UIElement3D uiElem3D = element as UIElement3D;
-                
+
                 if (uiElem != null)
 
                 {
@@ -521,44 +521,47 @@ namespace System.Windows.Input
                 }
                 else
                 {
-                    visibility = uiElem3D.Visibility;                    
+                    visibility = uiElem3D.Visibility;
                 }
-                
+
                 if (visibility != Visibility.Visible)
                 {
                     return false;
                 }
-                
+
                 element = UIElementHelper.GetUIParent(element);
             }
-            
+
             return true;
         }
 
         // returns whether the given DO is enabled or not
         private static bool IsEnabled(DependencyObject element)
         {
-            return ((bool)element.GetValue(UIElement.IsEnabledProperty));                               
+            return ((bool)element.GetValue(UIElement.IsEnabledProperty));
         }
 
         private struct AccessKeyInformation
         {
             public object Scope
             {
-                get 
+                get
                 {
                     return _scope;
                 }
-                set 
+                set
                 {
                     _scope = value;
                 }
             }
 
-            
+
             public UIElement target;
 
-            private static AccessKeyInformation _empty = new AccessKeyInformation();
+            #pragma warning disable 0649
+            private static AccessKeyInformation _empty;
+
+            #pragma warning restore 0649
             public static AccessKeyInformation Empty
             {
                 get
@@ -624,23 +627,23 @@ namespace System.Windows.Input
         #endregion
 
         #region Private Properties
-        
+
         /////////////////////////////////////////////////////////////////////////////////
         // Overview: Algorithm to look up access key from the element for which it is a target.
-        //           
+        //
         //     When the AccessKeyCharacter for an element is requested we see if there
         //     is a corresponding AccessKeyElement stashed on the element.  If there is,
-        //     raise the AccessKeyPressed event on it to see if that element is  still the 
-        //     target for it.  If not, go through all registered accesskeys and get their 
+        //     raise the AccessKeyPressed event on it to see if that element is  still the
+        //     target for it.  If not, go through all registered accesskeys and get their
         //     targets until we find the desired element.  The "primary" access key character
         //     is the first one we find.
-        //     
-        //     Note: The algorithm ends up being O(n) for each request for AccessKeyCharacter 
+        //
+        //     Note: The algorithm ends up being O(n) for each request for AccessKeyCharacter
         //     because there is no mapping from AccessKeyElement to its "primary" character.
         //     Maintaining this would require storing a hash from AccessKeyElement to character
         //     or requiring that each element registered implement an interface or some other
-        //     kind of contract.  Because we don't keep track of this or enforce this, to find 
-        //     the "primary" character we must go through all registered pairs of 
+        //     kind of contract.  Because we don't keep track of this or enforce this, to find
+        //     the "primary" character we must go through all registered pairs of
         //     (character, element) to find the character -- O(n).
         //
         //     This ends up being just fine, because in any given context there shouldn't be
@@ -672,17 +675,17 @@ namespace System.Windows.Input
             if (accessKeyElement != null)
             {
                 // First figure out if the target of accessKeyElement is still "d", then go find
-                // the "primary" character for the accessKeyElement.  
+                // the "primary" character for the accessKeyElement.
 
                 AccessKeyPressedEventArgs accessKeyPressedEventArgs = new AccessKeyPressedEventArgs();
                 accessKeyElement.RaiseEvent(accessKeyPressedEventArgs);
                 if (accessKeyPressedEventArgs.Target == d)
                 {
                     // Because there is no way to get at the access key element's character from the
-                    // element (there is no interface or anything) we have to go through all registered 
+                    // element (there is no interface or anything) we have to go through all registered
                     // access keys and see if this access key element is still registered and what its
                     // "primary" character is.
-                
+
                     foreach (DictionaryEntry entry in Current._keyToElements)
                     {
                         ArrayList elements = (ArrayList)entry.Value;
@@ -842,7 +845,7 @@ namespace System.Windows.Input
     public class AccessKeyEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         internal AccessKeyEventArgs(string key, bool isMultiple, bool userInitiated)
         {
@@ -877,7 +880,7 @@ namespace System.Windows.Input
         {
             get { return _userInitiated.Value; }
         }
-        
+
 
         private string _key;
         private bool _isMultiple;

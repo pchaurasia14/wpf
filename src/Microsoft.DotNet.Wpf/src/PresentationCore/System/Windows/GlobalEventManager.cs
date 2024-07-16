@@ -469,7 +469,7 @@ namespace System.Windows
         // This member keeps a count of the total number of Routed Events registered so far
         // The member also serves as the internally used ComputedEventIndex that indexes
         // EventListenersListss that store class handler information for a class type       
-        private static int _countRoutedEvents = 0;
+        private static int _countRoutedEvents;
 
         // This is an efficient Hashtable of ItemLists keyed on DType
         // Each ItemList holds the registered RoutedEvent class handlers for that ClassType

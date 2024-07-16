@@ -1349,7 +1349,7 @@ namespace MS.Internal.Media3D
         private GeneralTransform3DTo2D _objectToViewport;
 
         // the cache of valid edges
-        List<HitTestEdge> _validEdgesCache = null;
+        List<HitTestEdge> _validEdgesCache;
 
         // the "ring" around the element with capture to use in the capture case
         private const double BUFFER_SIZE = 2.0;                  

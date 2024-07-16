@@ -902,7 +902,7 @@ namespace System.Windows.Interop
         }
         
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         // User-specified DPI of their surface
         private double _dpiX;

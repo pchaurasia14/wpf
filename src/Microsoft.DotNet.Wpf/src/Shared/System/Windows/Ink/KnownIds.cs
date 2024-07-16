@@ -292,7 +292,7 @@ namespace System.Windows.Ink
         #endregion
 
         #region Known Id Helpers
-        private static System.Reflection.MemberInfo[] PublicMemberInfo = null;
+        private static System.Reflection.MemberInfo[] PublicMemberInfo;
         internal static string ConvertToString (Guid id)
         {
 

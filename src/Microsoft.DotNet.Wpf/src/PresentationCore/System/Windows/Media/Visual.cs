@@ -1850,7 +1850,7 @@ namespace System.Windows.Media
 
         internal class TopMostHitResult
         {
-            internal HitTestResult _hitResult = null;
+            internal HitTestResult _hitResult;
 
             internal HitTestResultBehavior HitTestResult(HitTestResult result)
             {

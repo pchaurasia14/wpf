@@ -315,11 +315,11 @@ namespace System.Windows.Media.Media3D
 
         #region Internal Fields
 
-        private double _cachedOffsetXValue = 0.0;
-        private double _cachedOffsetYValue = 0.0;
-        private double _cachedOffsetZValue = 0.0;
+        private double _cachedOffsetXValue;
+        private double _cachedOffsetYValue;
+        private double _cachedOffsetZValue;
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_OffsetX = 0.0;
         internal const double c_OffsetY = 0.0;

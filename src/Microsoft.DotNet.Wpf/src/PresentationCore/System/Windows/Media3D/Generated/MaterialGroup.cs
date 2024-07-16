@@ -425,7 +425,7 @@ namespace System.Windows.Media.Media3D
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal static MaterialCollection s_Children = MaterialCollection.Empty;
 

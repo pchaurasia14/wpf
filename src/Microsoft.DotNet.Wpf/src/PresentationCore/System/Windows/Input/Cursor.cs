@@ -350,7 +350,7 @@ namespace System.Windows.Input
 
         private string      _fileName     = String.Empty;
         private CursorType  _cursorType   = CursorType.None;
-        private bool        _scaleWithDpi = false;
+        private bool        _scaleWithDpi;
 
         private SafeHandle  _cursorHandle;
 

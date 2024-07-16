@@ -255,7 +255,7 @@ namespace System.Windows.Media
 
 
 
-        internal static Point s_StartPoint = new Point();
+        internal static Point s_StartPoint;
         internal const bool c_IsFilled = true;
         internal static PathSegmentCollection s_Segments = PathSegmentCollection.Empty;
         internal const bool c_IsClosed = false;

@@ -177,7 +177,7 @@ namespace System.Windows.Input
         protected const double DoubleTapMaxFactor = 1.3; // 130% of the default threshold.
 
         // Caches the pointer stack enabled state
-        private static bool? _isPointerStackEnabled = null;
+        private static bool? _isPointerStackEnabled;
 
         // Caches TransformToDevice matrices per DpiScale2
         private readonly Dictionary<DpiScale2, Matrix> _transformToDeviceMatrices = new Dictionary<DpiScale2, Matrix>();

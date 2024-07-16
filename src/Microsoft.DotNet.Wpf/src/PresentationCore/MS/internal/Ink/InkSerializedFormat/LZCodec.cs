@@ -115,9 +115,9 @@ namespace MS.Internal.Ink.InkSerializedFormat
         /// Privates
         /// </summary>
         private byte[] _ringBuffer = new byte[RingBufferLength];
-        private int _maxMatchLength = 0;
-        private int _flags = 0;
-        private int _currentRingBufferPosition = 0;
+        private int _maxMatchLength;
+        private int _flags;
+        private int _currentRingBufferPosition;
 
         /// <summary>
         /// Statics / constants

@@ -378,7 +378,7 @@ namespace System.Windows.Media
 
         #region Internal Properties
 
-        internal DUCE.MultiChannelResource _contentRoot = new DUCE.MultiChannelResource();
+        internal DUCE.MultiChannelResource _contentRoot;
         internal const DUCE.ResourceType s_contentRootType = DUCE.ResourceType.TYPE_VISUAL;
 
         /// <summary>

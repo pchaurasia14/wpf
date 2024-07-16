@@ -62,7 +62,7 @@ namespace MS.Internal.Ink.InkSerializedFormat
 
         internal PersistenceFormat CurrentPersistenceFormat = PersistenceFormat.InkSerializedFormat;
         internal CompressionMode CurrentCompressionMode = CompressionMode.Compressed;
-        internal System.Collections.Generic.List<int> StrokeIds = null;
+        internal System.Collections.Generic.List<int> StrokeIds;
         #endregion
 
         #region Decoding
@@ -2670,16 +2670,16 @@ namespace MS.Internal.Ink.InkSerializedFormat
 
         internal class StrokeLookupEntry
         {
-            internal uint MetricDescriptorTableIndex = 0;
-            internal uint StrokeDescriptorTableIndex = 0;
-            internal uint TransformTableIndex = 0;
-            internal uint DrawingAttributesTableIndex = 0;
+            internal uint MetricDescriptorTableIndex;
+            internal uint StrokeDescriptorTableIndex;
+            internal uint TransformTableIndex;
+            internal uint DrawingAttributesTableIndex;
 
             // Compression algorithm data
-            internal byte CompressionData = 0;
+            internal byte CompressionData;
 
-            internal int[][] ISFReadyStrokeData = null;
-            internal bool StorePressure = false;
+            internal int[][] ISFReadyStrokeData;
+            internal bool StorePressure;
         }
 
         #endregion // Encoding
@@ -2706,19 +2706,19 @@ namespace MS.Internal.Ink.InkSerializedFormat
         #region Private Fields
 
         StrokeCollection _coreStrokes;
-        private System.Collections.Generic.List<StrokeDescriptor> _strokeDescriptorTable = null;
-        private System.Collections.Generic.List<TransformDescriptor> _transformTable = null;
-        private System.Collections.Generic.List<DrawingAttributes> _drawingAttributesTable = null;
-        private System.Collections.Generic.List<MetricBlock> _metricTable = null;
+        private System.Collections.Generic.List<StrokeDescriptor> _strokeDescriptorTable;
+        private System.Collections.Generic.List<TransformDescriptor> _transformTable;
+        private System.Collections.Generic.List<DrawingAttributes> _drawingAttributesTable;
+        private System.Collections.Generic.List<MetricBlock> _metricTable;
         private Vector _himetricSize = new Vector(0.0f, 0.0f);
 
 
             // The ink space rectangle (e.g. bounding box for GIF) is stored
             //      with the serialization info so that load/save roundtrip the
             //      rectangle
-        private Rect _inkSpaceRectangle = new Rect();
+        private Rect _inkSpaceRectangle;
 
-        System.Collections.Generic.Dictionary<Stroke, StrokeLookupEntry> _strokeLookupTable = null;
+        System.Collections.Generic.Dictionary<Stroke, StrokeLookupEntry> _strokeLookupTable;
 
         #endregion
     }

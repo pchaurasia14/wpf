@@ -21,7 +21,7 @@ namespace MS.Internal.Ink
     {
         #region Statics
 
-        private static readonly StrokeNodeData s_empty = new StrokeNodeData();
+        private static readonly StrokeNodeData s_empty;
 
         #endregion
 

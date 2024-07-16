@@ -1570,12 +1570,12 @@ namespace System.Windows.Media.Imaging
 
         #region Data Members
 
-        private bool _delayCreation = false;
-        private bool _creationComplete = false;
-        private bool _useVirtuals = false;
+        private bool _delayCreation;
+        private bool _creationComplete;
+        private bool _useVirtuals;
         internal BitmapInitialize _bitmapInit = new BitmapInitialize();
 
-        internal BitmapSourceSafeMILHandle _wicSource = null;
+        internal BitmapSourceSafeMILHandle _wicSource;
 
         internal BitmapSourceSafeMILHandle _convertedDUCEPtr;
 
@@ -1595,14 +1595,14 @@ namespace System.Windows.Media.Imaging
 
         // cached properties. should always reflect the unmanaged copy
         internal PixelFormat _format = PixelFormats.Default;
-        internal int _pixelWidth = 0;
-        internal int _pixelHeight = 0;
+        internal int _pixelWidth;
+        internal int _pixelHeight;
         internal double _dpiX = 96.0;
         internal double _dpiY = 96.0;
-        internal BitmapPalette _palette = null;
+        internal BitmapPalette _palette;
 
         /// Duce resource
-        internal DUCE.MultiChannelResource _duceResource = new DUCE.MultiChannelResource();
+        internal DUCE.MultiChannelResource _duceResource;
 
         // Whether or not the _wicSource handle must be cached on the UI Thread
         // before being passed to the render thread.
@@ -1653,7 +1653,7 @@ namespace System.Windows.Media.Imaging
             };
 
         // For propagating events in bitmap chains
-        private WeakBitmapSourceEventSink _weakBitmapSourceEventSink = null;
+        private WeakBitmapSourceEventSink _weakBitmapSourceEventSink;
 
         #endregion
 

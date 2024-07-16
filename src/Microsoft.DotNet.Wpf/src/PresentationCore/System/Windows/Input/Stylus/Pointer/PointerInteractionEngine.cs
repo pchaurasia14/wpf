@@ -26,7 +26,7 @@ namespace System.Windows.Input.StylusPointer
 {
     /// <summary>
     /// Provides access and data from the Windows Interaction Context engine.
-    /// 
+    ///
     /// This gives WPF access to gestures and other features based off WM_POINTER data.
     /// </summary>
     internal class PointerInteractionEngine : IDisposable
@@ -104,7 +104,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The stylus device that owns this interaction engine.
         /// </summary>
-        private PointerStylusDevice _stylusDevice = null;
+        private PointerStylusDevice _stylusDevice;
 
         /// <summary>
         /// A callback for interaction events
@@ -116,17 +116,17 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Has a drag been fired in the latest pointer message series
         /// </summary>
-        private bool _firedDrag = false;
+        private bool _firedDrag;
 
         /// <summary>
         /// Has a hold been fired in the latest pointer message series
         /// </summary>
-        private bool _firedHold = false;
+        private bool _firedHold;
 
         /// <summary>
         /// Has a flick been fired in the latest pointer message series
         /// </summary>
-        private bool _firedFlick = false;
+        private bool _firedFlick;
 
         /// <summary>
         /// The current state of hover tracking
@@ -136,13 +136,15 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// When hover started, in processor ticks
         /// </summary>
-        private uint _hoverStartTicks = 0;
+        private uint _hoverStartTicks;
 
         /// <summary>
         /// The engine used to detect and fire flicks
         /// </summary>
-        private PointerFlickEngine _flickEngine = null;
 
+        #pragma warning disable 0649
+        private PointerFlickEngine _flickEngine;
+        #pragma warning restore 0649
         #endregion
 
         #endregion
@@ -211,7 +213,7 @@ namespace System.Windows.Input.StylusPointer
 
         #region IDisposable Support
 
-        private bool _disposed = false;
+        private bool _disposed;
 
         /// <summary>
         /// Destroy native resources
@@ -340,7 +342,7 @@ namespace System.Windows.Input.StylusPointer
 
         #endregion
 
-        #region Interaction Detection Functions       
+        #region Interaction Detection Functions
 
         /// <summary>
         /// Updates and forwards flick engine results as a gesture
@@ -358,7 +360,7 @@ namespace System.Windows.Input.StylusPointer
             if (rsir.Actions == RawStylusActions.Up
                 && (_flickEngine?.Result?.CanBeFlick ?? false))
             {
-                // 
+                //
 
                 InteractionDetected?.Invoke(this,
                     new RawStylusSystemGestureInputReport(
@@ -497,7 +499,7 @@ namespace System.Windows.Input.StylusPointer
                     double xChangeInches = output.arguments.manipulation.cumulative.translationX / dpi.PixelsPerInchX;
                     double yChangeInches = output.arguments.manipulation.cumulative.translationY / dpi.PixelsPerInchY;
 
-                    // If the cumulative change is greater than our threshold 
+                    // If the cumulative change is greater than our threshold
                     // (taken from WISP, converted to inches) then fire a drag.
                     if (xChangeInches > DragThresholdInches || yChangeInches > DragThresholdInches)
                     {

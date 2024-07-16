@@ -312,7 +312,7 @@ namespace System.Windows.Media
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_Angle = 0.0;
         internal const double c_CenterX = 0.0;

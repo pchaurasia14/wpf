@@ -300,7 +300,7 @@ namespace System.Windows.Media.Effects
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_Radius = 5.0;
         internal const KernelType c_KernelType = KernelType.Gaussian;

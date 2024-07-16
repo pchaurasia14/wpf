@@ -350,9 +350,9 @@ namespace System.Windows.Media.Imaging
 
 
 
-        internal static BitmapSource s_Source = null;
+        internal static BitmapSource s_Source;
         internal static PixelFormat s_DestinationFormat = PixelFormats.Pbgra32;
-        internal static BitmapPalette s_DestinationPalette = null;
+        internal static BitmapPalette s_DestinationPalette;
         internal const double c_AlphaThreshold = 0.0;
 
         #endregion Internal Fields

@@ -380,7 +380,7 @@ namespace System.Windows.Media.Imaging
         // cloned, _palette isn't copied and so is reset to null. This means that the
         // next call to InternalPalette will create a new IWICPalette, which is exactly
         // the behavior that we want.
-        private SafeMILHandle _palette = null; // IWICPalette*
+        private SafeMILHandle _palette; // IWICPalette*
 
         private IList<Color> _colors = new PartialList<Color>(new List<Color>());
     }

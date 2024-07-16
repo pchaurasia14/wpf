@@ -1419,13 +1419,13 @@ namespace System.Windows.Media.Imaging
 
         private BitmapSourceSafeMILHandle _pBackBuffer; // IWICBitmap
 
-        private uint _lockCount = 0;
+        private uint _lockCount;
 
         // Flags whether the user has added a dirty rect since the last CopyForward packet was sent.
         private bool _hasDirtyRects = true;
 
         // Flags whether a MediaContext.CommittingBatch handler has already been added.
-        private bool _isWaitingForCommit = false;   
+        private bool _isWaitingForCommit;
 
         private ManualResetEvent _copyCompletedEvent = new ManualResetEvent(true);
 
@@ -1443,7 +1443,7 @@ namespace System.Windows.Media.Imaging
         }
         private EventHandler _committingBatchHandler; // = OnCommittingBatch (CS0236)
 
-        private bool _actLikeSimpleBitmap = false;
+        private bool _actLikeSimpleBitmap;
 
         #endregion // Fields
     }

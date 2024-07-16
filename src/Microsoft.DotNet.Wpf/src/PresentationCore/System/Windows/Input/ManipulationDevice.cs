@@ -522,8 +522,8 @@ namespace System.Windows.Input
         private bool _ticking;
         private bool _wasTicking; // boolean used to track suspended manipulation devices
         private Func<Point, Point> _compensateForBoundaryFeedback;
-        private bool _manipulationEnded = false;
-        IManipulator _removedManipulator = null;
+        private bool _manipulationEnded;
+        IManipulator _removedManipulator;
 
         [ThreadStatic]
         private static Int64 LastUpdatedTimestamp;

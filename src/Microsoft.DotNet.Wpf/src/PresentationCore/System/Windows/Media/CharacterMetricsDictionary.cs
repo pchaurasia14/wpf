@@ -336,8 +336,8 @@ namespace System.Windows.Media
         internal const int PageMask = PageSize - 1;
         internal const int PageCount = (LastDeviceFontCharacterCode + 1 + (PageSize - 1)) / PageSize;
 
-        private CharacterMetrics[][] _pageTable = null;
-        private int _count = 0;
+        private CharacterMetrics[][] _pageTable;
+        private int _count;
 
         internal CharacterMetrics[] GetPage(int i)
         {

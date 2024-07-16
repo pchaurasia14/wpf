@@ -30,7 +30,7 @@ namespace System.Windows.Input.StylusPointer
 
         #region Properties
 
-        internal bool IsValid { get; private set; } = false;
+        internal bool IsValid { get; private set; }
 
         #endregion
 

@@ -119,8 +119,8 @@ namespace System.Windows.Interop
 
         private NativeMethods.HWND _hWnd;
 
-        private NativeMethods.RECT _hwndClientRectInScreenCoords = new NativeMethods.RECT();
-        private NativeMethods.RECT _hwndWindowRectInScreenCoords = new NativeMethods.RECT();
+        private NativeMethods.RECT _hwndClientRectInScreenCoords;
+        private NativeMethods.RECT _hwndWindowRectInScreenCoords;
 
         private Color _backgroundColor = Color.FromRgb(0, 0, 0);
 
@@ -130,27 +130,27 @@ namespace System.Windows.Interop
         private bool _isRenderTargetEnabled = true;
         // private Nullable<Color> _colorKey = null;
         // private double _opacity = 1.0;
-        private bool _usesPerPixelOpacity = false;
+        private bool _usesPerPixelOpacity;
 
         // It is important that this start at zero to allow an initial
         // UpdateWindowSettings(enable) command to enable the render target
         // without a preceeding UpdateWindowSettings(disable) command.
-        private int _disableCookie = 0;
+        private int _disableCookie;
 
         // Used to deal with layered window problems. See comments where they are used.
-        private bool _isMinimized = false;
-        private bool _isSessionDisconnected = false;
-        private bool _isSuspended = false;
+        private bool _isMinimized;
+        private bool _isSessionDisconnected;
+        private bool _isSuspended;
 
         // True when user input is causing a resize. We use this to determine whether or
         // not we want to sync during resize to provide a better looking resize.
-        private bool _userInputResize = false;
+        private bool _userInputResize;
 
         // This bool is set by a private window message sent to us from the render thread,
         // indicating that the present has failed with S_PRESENT_OCCLUDED (usually due to the
         // monitor being asleep or locked) and that we need to invalidate the entire window for
         // presenting when the monitor turns back on.
-        private bool _needsRePresentOnWake = false;
+        private bool _needsRePresentOnWake;
 
         // See comment above for _needsRePresentOnWake. If the present has failed because of a
         // reason other than the monitor being asleep (usually because a D3D full screen exclusive
@@ -160,7 +160,7 @@ namespace System.Windows.Interop
         // invalidate due to the private window message indicating failure if we are *not* asleep, once
         // the timeout period specified by _allowedPresentFailureDelay has passed
         // Any failure after that until another sleep state event occurs will not trigger an invalidate.
-        private bool _hasRePresentedSinceWake = false;
+        private bool _hasRePresentedSinceWake;
 
         /// <summary>
         /// True if wpfgfx indicates that valid displays
@@ -193,7 +193,7 @@ namespace System.Windows.Interop
         /// invalidate the entire window when display devices become
         /// available
         /// </summary>
-        private bool _wasWmPaintProcessingDeferred = false;
+        private bool _wasWmPaintProcessingDeferred;
 
         /// <summary>
         /// Session ID of this process
@@ -202,7 +202,7 @@ namespace System.Windows.Interop
         /// If the query for the session ID using WTS API's fails,
         /// then this value will remain null
         /// </remarks>
-        private int? _sessionId = null;
+        private int? _sessionId;
 
         // The time of the last wake or unlock message we received. When we receive a lock/sleep message,
         // we set this value to DateTime.MinValue
@@ -2000,7 +2000,7 @@ namespace System.Windows.Interop
         ///     per-monitor DPI, and will always default to system aware or unaware modes.
         ///     To get the actual value, refer to <see cref="AppManifestProcessDpiAwareness"/>
         /// </remarks>
-        private static PROCESS_DPI_AWARENESS? ProcessDpiAwareness { get; set; } = null;
+        private static PROCESS_DPI_AWARENESS? ProcessDpiAwareness { get; set; }
 
         /// <summary>
         /// The actual PROCESS_DPI_AWARENESS of the process set by the application manifest,
@@ -2016,7 +2016,7 @@ namespace System.Windows.Interop
         ///     initialized or not. This helps us ensure that <see cref="AppManifestProcessDpiAwareness"/>
         ///     and <see cref="ProcessDpiAwareness"/> are only initialized once.
         /// </remarks>
-        private static PROCESS_DPI_AWARENESS? AppManifestProcessDpiAwareness { get; set; } = null;
+        private static PROCESS_DPI_AWARENESS? AppManifestProcessDpiAwareness { get; set; }
 
         #endregion
 

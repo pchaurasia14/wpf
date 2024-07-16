@@ -327,7 +327,7 @@ namespace MS.Internal.Ink
         #region Fields
 
         private StrokeNodeIterator      _nodeIterator;
-        private List<StrokeNode>        _erasingStrokeNodes = null;
+        private List<StrokeNode>        _erasingStrokeNodes;
         private Rect                    _bounds = Rect.Empty;
 
 #if POINTS_FILTER_TRACE

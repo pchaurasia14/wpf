@@ -312,7 +312,7 @@ namespace System.Windows.Media.Imaging
 
 
 
-        internal static BitmapSource s_Source = null;
+        internal static BitmapSource s_Source;
         internal static Transform s_Transform = Transform.Identity;
 
         #endregion Internal Fields

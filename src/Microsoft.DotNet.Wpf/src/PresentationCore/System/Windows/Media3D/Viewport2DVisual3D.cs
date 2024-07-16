@@ -942,8 +942,8 @@ namespace System.Windows.Media.Media3D
         private VisualBrush _visualBrush;
         private BitmapCacheBrush _bitmapCacheBrush;
 
-        private Point3DCollection _positionsCache = null;
-        private PointCollection _textureCoordinatesCache = null;
-        private Int32Collection _triangleIndicesCache = null;
+        private Point3DCollection _positionsCache;
+        private PointCollection _textureCoordinatesCache;
+        private Int32Collection _triangleIndicesCache;
     }
 }

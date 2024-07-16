@@ -23,7 +23,7 @@ namespace MS.Internal.WindowsRuntime
             private Color _accentColor, _accentLight1, _accentLight2, _accentLight3;
             private Color _accentDark1, _accentDark2, _accentDark3;
 
-            private bool _useFallbackColor = false;
+            private bool _useFallbackColor;
 
             internal UISettings()
             {
@@ -145,7 +145,7 @@ namespace MS.Internal.WindowsRuntime
 
             #region IDisposable
 
-            bool _disposed = false;
+            bool _disposed;
 
             ~UISettings()
             {

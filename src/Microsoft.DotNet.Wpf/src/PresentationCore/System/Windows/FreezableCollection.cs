@@ -973,7 +973,7 @@ namespace System.Windows
         #region Internal Fields
 
         internal List<T> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
         #endregion Internal Fields
 

@@ -111,7 +111,7 @@ namespace System.Windows.Input.StylusPointer
         private Point _flickStartTablet;
         private Point _lastPhysicalPoint;
 
-        private PointerStylusDevice _stylusDevice = null;
+        private PointerStylusDevice _stylusDevice;
 
         private double _distance;
         private double _flickDirectionRadians;

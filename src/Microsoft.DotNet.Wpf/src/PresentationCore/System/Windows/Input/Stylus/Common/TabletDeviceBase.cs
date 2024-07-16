@@ -67,7 +67,7 @@ namespace System.Windows.Input
 
         #region IDisposable
 
-        protected bool _disposed = false;
+        protected bool _disposed;
 
         public void Dispose()
         {

@@ -423,11 +423,11 @@ namespace System.Windows.Media.Media3D
         private double _cachedScaleXValue = 1.0;
         private double _cachedScaleYValue = 1.0;
         private double _cachedScaleZValue = 1.0;
-        private double _cachedCenterXValue = 0.0;
-        private double _cachedCenterYValue = 0.0;
-        private double _cachedCenterZValue = 0.0;
+        private double _cachedCenterXValue;
+        private double _cachedCenterYValue;
+        private double _cachedCenterZValue;
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_ScaleX = 1.0;
         internal const double c_ScaleY = 1.0;

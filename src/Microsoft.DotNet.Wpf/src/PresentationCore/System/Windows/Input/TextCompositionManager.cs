@@ -945,10 +945,10 @@ namespace System.Windows.Input
         private TextComposition _altNumpadcomposition;
 
         // True if EnableHexNumpad registry has been checked.
-        private static bool _isHexNumpadRegistryChecked = false;
+        private static bool _isHexNumpadRegistryChecked;
 
         // True if EnableHexNumpad registry is set.
-        private static bool _isHexNumpadEnabled = false;
+        private static bool _isHexNumpadEnabled;
 
         // Character encoding length.
         private const int EncodingBufferLen  =  4;

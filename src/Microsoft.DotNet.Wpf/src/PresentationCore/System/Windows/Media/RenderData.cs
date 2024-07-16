@@ -540,10 +540,10 @@ namespace System.Windows.Media
 
         private int _bitmapEffectStackDepth;
         
-        private FrugalStructList<Object> _dependentResources = new FrugalStructList<Object>();
+        private FrugalStructList<Object> _dependentResources;
 
         // DUCE resource
-        private DUCE.MultiChannelResource _duceResource = new DUCE.MultiChannelResource();
+        private DUCE.MultiChannelResource _duceResource;
 
         #endregion Private Fields
     }

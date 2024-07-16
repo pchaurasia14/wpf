@@ -17,7 +17,7 @@ namespace System.Windows.Media.Animation
     internal abstract class IndependentAnimationStorage : AnimationStorage, DUCE.IResource
     {
         protected MediaContext.ResourcesUpdatedHandler       _updateResourceHandler;
-        protected DUCE.MultiChannelResource     _duceResource = new DUCE.MultiChannelResource();
+        protected DUCE.MultiChannelResource     _duceResource;
         private bool _isValid = true;
 
         #region Constructor

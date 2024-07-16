@@ -1022,7 +1022,7 @@ namespace System.Windows.Ink
 
         private ExtendedPropertyCollection              _extendedProperties;
         private uint                                    _v1RasterOperation = DrawingAttributeSerializer.RasterOperationDefaultV1;
-        private bool                                    _heightChangedForCompatabity = false;
+        private bool                                    _heightChangedForCompatabity;
 
         /// <summary>
         /// Statics

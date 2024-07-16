@@ -997,7 +997,7 @@ namespace System.Windows.Media
                         // SyncFlush will Commit()
 
                         CommittingBatch?.Invoke(Channel, new EventArgs());
-                        
+
 
                         Channel.SyncFlush();
                     }
@@ -2262,7 +2262,7 @@ namespace System.Windows.Media
                         {
                             // WaitForNextMessage will Commit()
                             CommittingBatch?.Invoke(Channel, new EventArgs());
-                            
+
 
                             Channel.WaitForNextMessage();
                             NotifyChannelMessage();
@@ -2303,7 +2303,7 @@ namespace System.Windows.Media
                 {
                     // SyncFlush() will Commit()
                     CommittingBatch?.Invoke(Channel, new EventArgs());
-                    
+
 
                     //
                     // Issue a sync flush, which will only return after
@@ -2694,7 +2694,7 @@ namespace System.Windows.Media
         /// <summary>
         /// ETW Event Resource handle for performance tracing
         /// </summary>
-        private DUCE.Resource _uceEtwEvent = new DUCE.Resource();
+        private DUCE.Resource _uceEtwEvent;
 
         /// <summary>
         /// Indicates that we are in the middle of processing a render message.
@@ -2706,14 +2706,17 @@ namespace System.Windows.Media
         /// This flag is set so that we know not to schedule an animation
         /// render after the render pass we use to unmarshall resources.
         /// </summary>
-        private bool _isDisconnecting = false;
+        #pragma warning disable 0649
+        private bool _isDisconnecting;
+
+        #pragma warning restore 0649
 
         /// <summary>
         /// Indicates we are in a disconnected state. This flag is used by the
         /// composition targets to determine if they need to DeleteCobsInSubgraph
         /// (i.e. unmarshall the visual tree)
         /// </summary>
-        private bool _isConnected = false;
+        private bool _isConnected;
 
         private FrugalObjectList<InvokeOnRenderCallback> _invokeOnRenderCallbacks;
 
@@ -2735,7 +2738,7 @@ namespace System.Windows.Media
         // uniqueness of realizations, and across the UI and UCE threads
         // in ETW trace events.
         //
-        private static int _contextRenderID = 0;
+        private static int _contextRenderID;
 
         // The render tier associated with this MediaContext. This is updated
         // when channels are created.
@@ -2770,7 +2773,7 @@ namespace System.Windows.Media
         // and forward broadcast messages
         private MediaContextNotificationWindow _notificationWindow;
 
-        private DUCE.ChannelSet? _currentRenderingChannel = null;
+        private DUCE.ChannelSet? _currentRenderingChannel;
 
         #endregion Private Fields
 

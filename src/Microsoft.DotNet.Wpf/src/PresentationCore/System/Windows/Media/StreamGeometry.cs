@@ -553,7 +553,7 @@ namespace System.Windows.Media
         #region Data
 
         private byte[] _data;
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         #endregion
     }

@@ -369,7 +369,7 @@ namespace System.Windows.Media.Imaging
         #region Data Members
 
         /// Thumbnail
-        internal BitmapSource _thumbnail = null;
+        internal BitmapSource _thumbnail;
 
         /// <summary>
         /// Metadata

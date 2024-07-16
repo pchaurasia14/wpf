@@ -242,7 +242,7 @@ namespace System.Windows.Media.Animation
 
         // DUCE resource
         // It is provided via the constructor.
-        private DUCE.MultiChannelResource _duceResource = new DUCE.MultiChannelResource();
+        private DUCE.MultiChannelResource _duceResource;
 
         // This bool keeps track of whether or not this resource is valid
         // on its channel.

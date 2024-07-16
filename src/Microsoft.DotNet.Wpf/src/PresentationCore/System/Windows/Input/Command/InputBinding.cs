@@ -256,13 +256,13 @@ namespace System.Windows.Input
         //------------------------------------------------------
 
 #region Private Fields
-        private     InputGesture  _gesture = null ;
+        private     InputGesture  _gesture;
 
         internal static object _dataLock = new object();
 
         // Fields to implement DO's inheritance context
-        private DependencyObject _inheritanceContext = null;
-        private bool _hasMultipleInheritanceContexts = false;
+        private DependencyObject _inheritanceContext;
+        private bool _hasMultipleInheritanceContexts;
 #endregion Private Fields
     }
 }

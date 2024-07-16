@@ -269,7 +269,7 @@ namespace System.Windows.Input
         private InertiaRotationBehavior _rotationBehavior;
         private InertiaExpansionBehavior _expansionBehavior;
         private Behaviors _behaviors = Behaviors.None;
-        private bool _isInInertia = false; // This is true when it is a second level inertia (inertia due to inertia).
+        private bool _isInInertia; // This is true when it is a second level inertia (inertia due to inertia).
         private IEnumerable<IManipulator> _manipulators;
 
         [Flags]

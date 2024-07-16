@@ -75,12 +75,12 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The PresentationSource that the latest input for this device is associated with
         /// </summary>
-        private SecurityCriticalDataClass<PresentationSource> _inputSource = null;
+        private SecurityCriticalDataClass<PresentationSource> _inputSource;
 
         /// <summary>
         /// The time (in ticks) when the last event occurred
         /// </summary>
-        private int _lastEventTimeTicks = 0;
+        private int _lastEventTimeTicks;
 
         /// <summary>
         /// The current pointer data
@@ -90,7 +90,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The cursor info associated with this StylusDevice
         /// </summary>
-        private UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO _cursorInfo = new UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO();
+        private UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO _cursorInfo;
 
         /// <summary>
         /// The TabletDevice that owns this
@@ -330,7 +330,7 @@ namespace System.Windows.Input.StylusPointer
         internal PointerTouchDevice TouchDevice
         {
             get; private set;
-        } = null;
+        }
 
         #endregion
 

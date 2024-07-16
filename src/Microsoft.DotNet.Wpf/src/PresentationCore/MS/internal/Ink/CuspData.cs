@@ -530,7 +530,7 @@ namespace MS.Internal.Ink
 
         private List<CDataPoint>        _points;
         private List<double>            _nodes;
-        private double                  _dist = 0;
+        private double                  _dist;
         private List<int>               _cusps = new List<int>();
 
         // Parameters governing the cusp detection algorithm

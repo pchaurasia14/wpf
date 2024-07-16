@@ -260,7 +260,7 @@ namespace System.Windows.Media.Media3D
 
         private Quaternion _cachedQuaternionValue = Quaternion.Identity;
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal static Quaternion s_Quaternion = Quaternion.Identity;
 

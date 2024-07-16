@@ -272,9 +272,9 @@ namespace System.Windows.Media.Effects
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
-        internal static Uri s_UriSource = null;
+        internal static Uri s_UriSource;
         internal const ShaderRenderMode c_ShaderRenderMode = ShaderRenderMode.Auto;
 
         #endregion Internal Fields

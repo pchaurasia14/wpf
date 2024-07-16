@@ -826,7 +826,7 @@ namespace MS.Internal.Ink
             }
         }
 
-        private double _radius = 0;
+        private double _radius;
         private Size   _radii;
         private Matrix _transform;
         private Matrix _nodeShapeToCircle;

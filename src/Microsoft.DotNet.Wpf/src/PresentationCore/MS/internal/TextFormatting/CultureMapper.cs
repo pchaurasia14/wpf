@@ -111,7 +111,7 @@ namespace MS.Internal.TextFormatting
             private CultureInfo _specificCulture;
         }
 
-        private static CachedCultureMap _cachedCultureMap = null;
+        private static CachedCultureMap _cachedCultureMap;
     }
 }
 

@@ -772,7 +772,7 @@ namespace System.Windows
 
         #endregion Private Constants
 
-        private static int _isDeviceGuardEnabled = 0;
+        private static int _isDeviceGuardEnabled;
     }
 
     #endregion Clipboard class

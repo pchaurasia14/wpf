@@ -43,7 +43,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// If the last tap had the barrel button down
         /// </summary>
-        private bool _lastTapBarrelDown = false;
+        private bool _lastTapBarrelDown;
 
         /// <summary>
         /// Holds the last point that recorded a tap
@@ -53,7 +53,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Holds the last time we recorded a tap in ticks
         /// </summary>
-        private int _lastTapTimeTicks = 0;
+        private int _lastTapTimeTicks;
 
         #endregion
 
@@ -93,7 +93,7 @@ namespace System.Windows.Input.StylusPointer
         /// Determines if we have yet refreshed our pointer devices.
         /// This allows us to bring the stack up when needed on first pointer input.
         /// </summary>
-        private bool _initialDeviceRefreshDone = false;
+        private bool _initialDeviceRefreshDone;
 
         /// <summary>
         /// A collection of current pointer devices attached to the system
@@ -113,7 +113,7 @@ namespace System.Windows.Input.StylusPointer
         /// Determines if we are currently processing a Drag/Drop operation.
         /// This is synced to InputManager in PreNotifyInput.
         /// </summary>
-        private bool _inDragDrop = false;
+        private bool _inDragDrop;
 
         #endregion
 

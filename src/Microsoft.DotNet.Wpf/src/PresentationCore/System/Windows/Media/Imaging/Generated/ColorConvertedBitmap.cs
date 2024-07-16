@@ -350,9 +350,9 @@ namespace System.Windows.Media.Imaging
 
 
 
-        internal static BitmapSource s_Source = null;
-        internal static ColorContext s_SourceColorContext = null;
-        internal static ColorContext s_DestinationColorContext = null;
+        internal static BitmapSource s_Source;
+        internal static ColorContext s_SourceColorContext;
+        internal static ColorContext s_DestinationColorContext;
         internal static PixelFormat s_DestinationFormat = PixelFormats.Pbgra32;
 
         #endregion Internal Fields

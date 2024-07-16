@@ -26,7 +26,7 @@ namespace System.Windows.Interop
     {
         #region Member Variables
 
-        private bool _disposed = false;
+        private bool _disposed;
 
         /// <summary>
         /// The HwndSource for WM_POINTER messages
@@ -60,7 +60,7 @@ namespace System.Windows.Interop
         /// <summary>
         /// If the window we are associated with is currently enabled.
         /// </summary>
-        internal bool IsWindowEnabled { get; private set; } = false;
+        internal bool IsWindowEnabled { get; private set; }
 
         #endregion
 

@@ -274,10 +274,10 @@ namespace MS.Internal.Resources
 
         #region private field
 
-        private ResourceManager _resourceManager = null;  // For localizable resources.
-        private ResourceSet     _resourceSet = null;      // For non-localizable resources.
-        private Assembly        _assembly = null;
-        private ArrayList       _resourceList = null;
+        private ResourceManager _resourceManager; // For localizable resources.
+        private ResourceSet     _resourceSet; // For non-localizable resources.
+        private Assembly        _assembly;
+        private ArrayList       _resourceList;
 
         private const string LocalizableResourceNameSuffix = ".g";
         private const string UnLocalizableResourceNameSuffix = ".unlocalizable.g";

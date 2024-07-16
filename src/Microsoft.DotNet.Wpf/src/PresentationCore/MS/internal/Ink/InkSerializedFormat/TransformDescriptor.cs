@@ -10,7 +10,7 @@ namespace MS.Internal.Ink.InkSerializedFormat
     internal class TransformDescriptor
     {
         private double[]   _transform = new double[6];
-        private uint      _size = 0;
+        private uint      _size;
         private KnownTagCache.KnownTagIndex _tag = KnownTagCache.KnownTagIndex.Unknown;
 
         public KnownTagCache.KnownTagIndex Tag

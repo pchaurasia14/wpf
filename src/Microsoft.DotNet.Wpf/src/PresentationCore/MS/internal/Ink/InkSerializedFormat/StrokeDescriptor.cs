@@ -12,7 +12,7 @@ namespace MS.Internal.Ink.InkSerializedFormat
     internal class StrokeDescriptor
     {
         private System.Collections.Generic.List<KnownTagCache.KnownTagIndex> _strokeDescriptor = new System.Collections.Generic.List<KnownTagCache.KnownTagIndex>();
-        private uint _Size = 0;
+        private uint _Size;
         public uint Size
         {
             get

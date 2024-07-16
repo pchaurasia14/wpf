@@ -332,21 +332,21 @@ namespace MS.Internal.Ink
 
         // Privates
         // reference to the source byte buffer to read from
-        private byte[] _byteArray = null;
+        private byte[] _byteArray;
 
         // maximum length of buffer to read in bits
-        private uint _bufferLengthInBits = 0;
+        private uint _bufferLengthInBits;
 
             // the index in the source buffer for the next byte to be read
-        private int _byteArrayIndex = 0;
+        private int _byteArrayIndex;
 
             // since the bits from multiple inputs can be packed into a single byte
             //  (e.g. 2 bits per input fits 4 per byte), we use this field as a cache
             //  of the remaining partial bits.
-        private byte _partialByte = 0;
+        private byte _partialByte;
 
             // the number of bits (partial byte) left to read in the overlapped byte field
-        private int _cbitsInPartialByte = 0;
+        private int _cbitsInPartialByte;
     }
 
     /// <summary>
@@ -491,9 +491,9 @@ namespace MS.Internal.Ink
 
 
         // the buffer that the bits are written into
-        private List<byte> _targetBuffer = null;
+        private List<byte> _targetBuffer;
 
         // number of free bits remaining in the last byte added to the target buffer
-        private int _remaining = 0;
+        private int _remaining;
     }
 }

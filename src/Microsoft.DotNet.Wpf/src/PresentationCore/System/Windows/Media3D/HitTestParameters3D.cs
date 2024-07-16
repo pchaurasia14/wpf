@@ -213,7 +213,7 @@ namespace System.Windows.Media.Media3D
 
         #region Private Fields
 
-        private Matrix3D? _hitTestProjectionMatrix = null;
+        private Matrix3D? _hitTestProjectionMatrix;
         private Matrix3DStack _visualTransformStack = new Matrix3DStack();
         private Matrix3DStack _modelTransformStack = new Matrix3DStack();
 

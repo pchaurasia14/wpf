@@ -30,7 +30,7 @@ namespace System.Windows.Input
         internal const int RequiredPressureIndex = 2;
         internal const int MaximumButtonCount = 31;
 
-        private int                         _buttonCount = 0;
+        private int                         _buttonCount;
         private int                         _originalPressureIndex = RequiredPressureIndex;
         private StylusPointPropertyInfo[]   _stylusPointPropertyInfos;
 

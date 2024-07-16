@@ -2541,7 +2541,7 @@ namespace System.Windows.Automation.Peers
         private bool _publicSetFocusInProgress;
         private bool _isInteropPeer;
         private bool _hasIterationParent;
-        private WeakReference _elementProxyWeakReference = null;
+        private WeakReference _elementProxyWeakReference;
 
         private static DispatcherOperationCallback _updatePeer = new DispatcherOperationCallback(UpdatePeer);
 

@@ -394,12 +394,12 @@ namespace System.Windows.Media.Media3D
 
         #region Internal Fields
 
-        private double _cachedCenterXValue = 0.0;
-        private double _cachedCenterYValue = 0.0;
-        private double _cachedCenterZValue = 0.0;
+        private double _cachedCenterXValue;
+        private double _cachedCenterYValue;
+        private double _cachedCenterZValue;
         private Rotation3D _cachedRotationValue = Rotation3D.Identity;
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_CenterX = 0.0;
         internal const double c_CenterY = 0.0;

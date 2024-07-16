@@ -259,8 +259,8 @@ namespace System.Windows.Media
 
 
 
-        internal static Point s_Point = new Point();
-        internal static Size s_Size = new Size();
+        internal static Point s_Point;
+        internal static Size s_Size;
         internal const double c_RotationAngle = 0.0;
         internal const bool c_IsLargeArc = false;
         internal const SweepDirection c_SweepDirection = SweepDirection.Counterclockwise;

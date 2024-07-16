@@ -282,7 +282,7 @@ namespace System.Windows.Media.Media3D
 
 
 
-        internal static Point3D s_Position = new Point3D();
+        internal static Point3D s_Position;
         internal const double c_Range = Double.PositiveInfinity;
         internal const double c_ConstantAttenuation = 1.0;
         internal const double c_LinearAttenuation = 0.0;

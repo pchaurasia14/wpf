@@ -2292,9 +2292,9 @@ namespace System.Windows.Input
         private DispatcherOperation _reevaluateCaptureOperation;
 
         // Device state we track
-        private Point _positionRelativeToOver = new Point();
-        private Point _lastPosition = new Point();
-        private bool _forceUpdateLastPosition = false;
+        private Point _positionRelativeToOver;
+        private Point _lastPosition;
+        private bool _forceUpdateLastPosition;
 
         // Data tags for information we pass around the staging area.
         private object _tagNonRedundantActions = new object();
@@ -2303,7 +2303,7 @@ namespace System.Windows.Input
 
         // Information used to distinguish double-clicks (actually, multi clicks) from
         // multiple independent clicks.
-        private Point _lastClick = new Point();
+        private Point _lastClick;
         private MouseButton _lastButton;
         private int _clickCount;
         private int _lastClickTime;
@@ -2314,6 +2314,6 @@ namespace System.Windows.Input
         private Cursor _overrideCursor;
 
         // Reference to StylusDevice to defer to for physical mouse state (position/button state)
-        private StylusDevice _stylusDevice = null;
+        private StylusDevice _stylusDevice;
     }
 }

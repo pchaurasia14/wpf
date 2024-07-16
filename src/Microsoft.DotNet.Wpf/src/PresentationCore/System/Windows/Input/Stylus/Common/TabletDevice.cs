@@ -26,7 +26,7 @@ namespace System.Windows.Input
         /// <summary>
         /// The base implementation in the private hierarchy
         /// </summary>
-        internal TabletDeviceBase TabletDeviceImpl { get; set; } = null;
+        internal TabletDeviceBase TabletDeviceImpl { get; set; }
 
         #endregion
 

@@ -22,7 +22,7 @@ namespace System.Windows.Media
     public class GeometryHitTestParameters : HitTestParameters
     {
         private PathGeometry _hitGeometryInternal;  // The internal geometry we use for hit testing
-        private Geometry _hitGeometryCache = null;  // Cached frozen copy we hand out from HitGeometry property.
+        private Geometry _hitGeometryCache; // Cached frozen copy we hand out from HitGeometry property.
         private Rect _origBounds;
         private Rect _bounds;
         private MatrixStack _matrixStack;

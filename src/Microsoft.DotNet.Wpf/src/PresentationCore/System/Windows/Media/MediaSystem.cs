@@ -344,11 +344,11 @@ namespace System.Windows.Media
         /// Keeps track of how often MediaSystem.Startup is called. So that the MediaSystem can be shut down at the right
         /// point in time.
         /// </summary>
-        private static int s_refCount = 0;
+        private static int s_refCount;
 
         private static ArrayList _mediaContexts = new ArrayList();
 
-        private static bool s_isConnected = false;
+        private static bool s_isConnected;
 
         /// <summary>
         /// Service channel to serve global glyph cache.
@@ -370,7 +370,7 @@ namespace System.Windows.Media
 
         // 1 if app is requesting to disable D3D dirty rectangle work, 0 otherwise.
         // We use Interlocked.CompareExchange to change this, which supports int but not bool.
-        private static int s_DisableDirtyRectangles = 0;
+        private static int s_DisableDirtyRectangles;
      }
 }
 

@@ -284,7 +284,7 @@ namespace System.Windows.Media.Media3D
 
         internal const double c_NearPlaneDistance = (double)0.125;
         internal const double c_FarPlaneDistance = (double)Double.PositiveInfinity;
-        internal static Point3D s_Position = new Point3D();
+        internal static Point3D s_Position;
         internal static Vector3D s_LookDirection = new Vector3D(0,0,-1);
         internal static Vector3D s_UpDirection = new Vector3D(0,1,0);
 

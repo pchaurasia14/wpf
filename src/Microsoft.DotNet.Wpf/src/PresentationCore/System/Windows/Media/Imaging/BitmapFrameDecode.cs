@@ -733,7 +733,7 @@ namespace System.Windows.Media.Imaging
         #region Data Members
 
         /// IWICBitmapFrameDecode source
-        private BitmapSourceSafeMILHandle _frameSource = null;
+        private BitmapSourceSafeMILHandle _frameSource;
 
         /// Frame number
         private int _frameNumber;
@@ -745,7 +745,7 @@ namespace System.Windows.Media.Imaging
         private bool _isMetadataCached;
 
         /// If the ColorContext is already cached
-        private bool _isColorContextCached = false;
+        private bool _isColorContextCached;
 
         /// CreateOptions for this Frame
         private BitmapCreateOptions _createOptions;

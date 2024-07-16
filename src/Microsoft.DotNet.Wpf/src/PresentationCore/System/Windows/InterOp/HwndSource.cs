@@ -2805,15 +2805,15 @@ namespace System.Windows.Interop
 
         private object                      _constructionParameters; // boxed HwndSourceParameters
 
-        private bool                        _isDisposed = false;
-        private bool                        _isDisposing = false;
-        private bool                        _inRealHwndDispose = false;
+        private bool                        _isDisposed;
+        private bool                        _isDisposing;
+        private bool                        _inRealHwndDispose;
 
         private bool                        _adjustSizingForNonClientArea;
         private bool                        _treatAncestorsAsNonClientArea;
 
         private bool                        _myOwnUpdate;
-        private bool                        _isWindowInMinimizeState = false;
+        private bool                        _isWindowInMinimizeState;
 
         private int                         _registeredDropTargetCount;
 
@@ -2854,7 +2854,7 @@ namespace System.Windows.Interop
         // Be careful about accessing this field directly.
         // It's bound to IKeyboardInputSink.KeyboardInputSite, so if a derived class overrides
         // that property then this field will be incorrect.
-        private IKeyboardInputSite          _keyboardInputSite = null;
+        private IKeyboardInputSite          _keyboardInputSite;
 
         private HwndWrapperHook             _layoutHook;
 

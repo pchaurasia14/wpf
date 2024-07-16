@@ -266,9 +266,9 @@ namespace System.Windows.Media
 
         #endregion
 
-        internal ITypeDescriptorContext _context = null;
+        internal ITypeDescriptorContext _context;
 
-        private Uri _baseUri = null;
+        private Uri _baseUri;
     }
 
     #endregion

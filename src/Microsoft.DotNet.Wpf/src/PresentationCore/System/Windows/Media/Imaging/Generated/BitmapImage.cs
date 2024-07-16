@@ -474,9 +474,9 @@ namespace System.Windows.Media.Imaging
 
 
 
-        internal static RequestCachePolicy s_UriCachePolicy = null;
-        internal static Uri s_UriSource = null;
-        internal static Stream s_StreamSource = null;
+        internal static RequestCachePolicy s_UriCachePolicy;
+        internal static Uri s_UriSource;
+        internal static Stream s_StreamSource;
         internal const int c_DecodePixelWidth = 0;
         internal const int c_DecodePixelHeight = 0;
         internal const Rotation c_Rotation = Rotation.Rotate0;

@@ -785,7 +785,7 @@ namespace System.Windows.Media
 
 
         internal FrugalStructList<Geometry> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
 
         #endregion Internal Fields

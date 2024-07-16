@@ -56,7 +56,7 @@ namespace System.Windows
         #region IsAltKeyRequiredInAccessKeyDefaultScope
 
         // We decided NOT to opt-in this feature by default.
-        private static bool _isAltKeyRequiredInAccessKeyDefaultScope = false;
+        private static bool _isAltKeyRequiredInAccessKeyDefaultScope;
 
         public static bool IsAltKeyRequiredInAccessKeyDefaultScope
         {
@@ -137,7 +137,7 @@ namespace System.Windows
 
         #region EnableMultimonitorDisplayClipping
 
-        private static bool? _enableMultiMonitorDisplayClipping = null;
+        private static bool? _enableMultiMonitorDisplayClipping;
 
         public static bool? EnableMultiMonitorDisplayClipping
         {

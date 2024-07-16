@@ -225,7 +225,7 @@ namespace MS.Internal.WindowsRuntime
 
             #region IDisposable
 
-            bool _disposed = false;
+            bool _disposed;
 
             ~InputPane()
             {

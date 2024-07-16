@@ -353,7 +353,7 @@ namespace System.Windows.Media
         private bool _pendingLayout;        
         private bool _reentrancyFlag;
 
-        private bool _isAsyncRenderRegistered = false;
+        private bool _isAsyncRenderRegistered;
         
         // Whether we need to re-calculate our content bounds.
         private bool _isCacheDirty = true;

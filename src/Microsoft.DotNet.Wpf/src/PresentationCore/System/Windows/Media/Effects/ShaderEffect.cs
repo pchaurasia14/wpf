@@ -1097,18 +1097,18 @@ namespace System.Windows.Media.Effects
         private const SamplingMode _defaultSamplingMode = SamplingMode.Auto;
 
         // Instance data
-        private double _topPadding = 0.0;
-        private double _bottomPadding = 0.0;
-        private double _leftPadding = 0.0;
-        private double _rightPadding = 0.0;
-        private List<MilColorF?> _floatRegisters = null;
-        private List<MilColorI?> _intRegisters = null;
-        private List<bool?> _boolRegisters = null;
-        private List<SamplerData?> _samplerData = null;
-        private uint _floatCount = 0;
-        private uint _intCount = 0;
-        private uint _boolCount = 0;
-        private uint _samplerCount = 0;
+        private double _topPadding;
+        private double _bottomPadding;
+        private double _leftPadding;
+        private double _rightPadding;
+        private List<MilColorF?> _floatRegisters;
+        private List<MilColorI?> _intRegisters;
+        private List<bool?> _boolRegisters;
+        private List<SamplerData?> _samplerData;
+        private uint _floatCount;
+        private uint _intCount;
+        private uint _boolCount;
+        private uint _samplerCount;
 
         private int _ddxUvDdyUvRegisterIndex = -1;
 

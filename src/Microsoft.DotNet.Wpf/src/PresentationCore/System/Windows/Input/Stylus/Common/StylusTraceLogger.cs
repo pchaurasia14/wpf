@@ -145,7 +145,7 @@ namespace System.Windows.Input.Tracing
         [EventData]
         internal class StylusErrorEventData
         {
-            public string Error { get; set; } = null;
+            public string Error { get; set; }
         }
 
         #endregion

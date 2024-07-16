@@ -1798,7 +1798,7 @@ namespace System.Windows.Media
             internal double _baseVectorX, _baseVectorY;
         }
 
-        private DUCE.MultiChannelResource _mcr = new DUCE.MultiChannelResource();
+        private DUCE.MultiChannelResource _mcr;
 
         /// <summary>
         /// Generate a series of requests to create or update

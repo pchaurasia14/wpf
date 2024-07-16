@@ -35,7 +35,7 @@ namespace System.Windows.Input
         /// This exists since this class now operates as a public wrapper to an internal
         /// hierarchy rooted with StylusDeviceBase.
         /// </summary>
-        internal StylusDeviceBase StylusDeviceImpl { get; set; } = null;
+        internal StylusDeviceBase StylusDeviceImpl { get; set; }
 
         #endregion
 

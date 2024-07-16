@@ -202,8 +202,8 @@ namespace System.Windows.Media
 
 
 
-        internal static Point s_Point1 = new Point();
-        internal static Point s_Point2 = new Point();
+        internal static Point s_Point1;
+        internal static Point s_Point2;
 
         #endregion Internal Fields
 

@@ -367,7 +367,7 @@ namespace System.Windows.Media.Media3D
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal static Vector3D s_Direction = new Vector3D(0,0,-1);
         internal const double c_OuterConeAngle = 90.0;

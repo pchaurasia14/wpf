@@ -439,6 +439,6 @@ namespace System.Windows.Input
 
         private bool _isDisposalPending;
 
-        private int _queuedEventCount = 0;
+        private int _queuedEventCount;
     }
 }

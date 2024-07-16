@@ -671,7 +671,7 @@ namespace System.Windows.Ink
 
 
         internal double TapHitPointSize = 1.0;
-        internal double TapHitRotation = 0;
+        internal double TapHitRotation;
         #endregion
 
         #region Private APIs
@@ -709,11 +709,11 @@ namespace System.Windows.Ink
 
         #region Private fields
 
-        private Geometry                _cachedGeometry     = null;
-        private bool                    _isSelected         = false;
-        private bool                    _drawAsHollow       = false;
+        private Geometry                _cachedGeometry;
+        private bool                    _isSelected;
+        private bool                    _drawAsHollow;
         private bool                    _cloneStylusPoints  = true;
-        private bool                    _delayRaiseInvalidated  = false;
+        private bool                    _delayRaiseInvalidated;
         private const double            HollowLineSize = 1.0f;
         private Rect                    _cachedBounds       = Rect.Empty;
 

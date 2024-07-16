@@ -699,13 +699,13 @@ namespace System.Windows.Ink
         private Dictionary<Stroke, StrokeVisual> _visuals;
 
         // Color-to-visual map for highlighter ink container visuals
-        private Dictionary<Color, HighlighterContainerVisual> _highlighters = null;
+        private Dictionary<Color, HighlighterContainerVisual> _highlighters;
 
         // Collection of strokes this Renderer renders
-        private StrokeCollection _strokes = null;
+        private StrokeCollection _strokes;
 
         // List of visuals attached via AttachIncrementalRendering
-        private List<Visual> _attachedVisuals = null;
+        private List<Visual> _attachedVisuals;
 
         // When true, will render in high contrast mode
         private bool _highContrast;

@@ -249,11 +249,11 @@ namespace System.Windows.Media.Animation
 
 
         /// <summary>
-        /// Gets a value indicating whether the Clock’s current time is inside the Active period
+        /// Gets a value indicating whether the Clockï¿½s current time is inside the Active period
         /// (meaning properties may change frame to frame), inside the Fill period, or Stopped.
         /// </summary>
         /// <remarks>
-        /// You can tell whether you’re in FillBegin or FillEnd by the value of CurrentProgress
+        /// You can tell whether youï¿½re in FillBegin or FillEnd by the value of CurrentProgress
         /// (0 for FillBegin, 1 for FillEnd).
         /// </remarks>
         public ClockState CurrentState
@@ -4428,8 +4428,8 @@ namespace System.Windows.Media.Animation
         private TimeSpan?           _currentTime;           // Precalculated current global time
         private ClockState          _currentClockState;     // Precalculated current clock state
 
-        private RootData            _rootData = null;       // Keeps track of root-related data for DesiredFrameRate
-        internal SyncData           _syncData = null;       // Keeps track of sync-related data for SlipBehavior
+        private RootData            _rootData; // Keeps track of root-related data for DesiredFrameRate
+        internal SyncData           _syncData; // Keeps track of sync-related data for SlipBehavior
 
 
         // Stores the clock's begin time as an offset from the clock's
@@ -4449,7 +4449,7 @@ namespace System.Windows.Media.Animation
         private  TimeSpan?          _currentIterationBeginTime;
 
         // How soon this Clock needs another tick
-        internal TimeSpan?          _nextTickNeededTime = null;
+        internal TimeSpan?          _nextTickNeededTime;
 
         private WeakReference       _weakReference;          
         private SubtreeFinalizer    _subtreeFinalizer;

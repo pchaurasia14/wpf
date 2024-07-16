@@ -2015,7 +2015,7 @@ namespace System.Windows.Media
         private string                          _text;
         private double                          _pixelsPerDip = MS.Internal.FontCache.Util.PixelsPerDip;
         private SpanVector                      _formatRuns = new SpanVector(null);
-        private SpanPosition                    _latestPosition = new SpanPosition();
+        private SpanPosition                    _latestPosition;
 
         private GenericTextParagraphProperties  _defaultParaProps;
 

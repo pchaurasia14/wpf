@@ -223,7 +223,7 @@ namespace System.Windows.Input
 
             IntPtr _hwnd;
             IPimcTablet3 _pimcTablet;
-            PenContextInfo _result = new PenContextInfo();
+            PenContextInfo _result;
         }
 
         /// <summary>

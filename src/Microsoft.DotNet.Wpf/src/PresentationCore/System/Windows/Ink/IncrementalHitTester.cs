@@ -932,12 +932,12 @@ namespace MS.Internal.Ink
 
         private Stroke                      _stroke;
         private Rect                        _bounds;
-        private double                      _hitWeight = 0f;
-        private bool                        _isHit = false;
+        private double                      _hitWeight;
+        private bool                        _isHit;
         private bool                        _isDirty = true;
         private StylusPointCollection       _stylusPoints;   // Cache the stroke rendering points
-        private double                      _totalWeight = 0f;
-        private bool                        _totalWeightCached = false;
+        private double                      _totalWeight;
+        private bool                        _totalWeightCached;
         #endregion
     }
 

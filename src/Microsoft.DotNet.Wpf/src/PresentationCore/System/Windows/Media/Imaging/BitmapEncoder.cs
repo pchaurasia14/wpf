@@ -808,10 +808,10 @@ namespace System.Windows.Media.Imaging
         internal bool _supportsFrameMetadata = true;
 
         /// does encoder support multiple frames?
-        internal bool _supportsMultipleFrames = false;
+        internal bool _supportsMultipleFrames;
 
         /// does encoder support color context?
-        internal bool _supportsColorContext = false;
+        internal bool _supportsColorContext;
 
         /// is it a built in encoder
         private bool _isBuiltIn;

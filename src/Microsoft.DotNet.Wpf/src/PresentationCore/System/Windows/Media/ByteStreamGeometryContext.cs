@@ -778,8 +778,8 @@ namespace System.Windows.Media
         private int _currentPathFigureDataOffset = -1;
         private MIL_SEGMENT_POLY _currentPolySegmentData;
         private int _currentPolySegmentDataOffset = -1;
-        private UInt32 _lastSegmentSize = 0;
-        private UInt32 _lastFigureSize = 0;
+        private UInt32 _lastSegmentSize;
+        private UInt32 _lastFigureSize;
 
         private const int c_defaultChunkSize = 2*1024;
         private const int c_maxChunkSize = 1024*1024;

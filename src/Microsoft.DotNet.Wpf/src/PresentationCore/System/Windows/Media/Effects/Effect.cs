@@ -264,15 +264,15 @@ namespace System.Windows.Media.Effects
             
             private readonly Rect _worldBounds;
             private readonly GeneralTransform _innerTransform;
-            private GeneralTransform _innerTransformInverse = null;
+            private GeneralTransform _innerTransformInverse;
             private bool _isInverse;
-            private UnitSpaceCoercingGeneralTransform _inverseTransform = null;
+            private UnitSpaceCoercingGeneralTransform _inverseTransform;
         }
         
 
         // Stores the "cache" of bounds x inner transform -> world space transform.
         private Rect _mruWorldBounds = Rect.Empty;
-        private GeneralTransform _mruInnerGeneralTransform = null;
+        private GeneralTransform _mruInnerGeneralTransform;
         private GeneralTransform _mruWorldSpaceGeneralTransform;
     }
 }

@@ -98,7 +98,7 @@ namespace MS.Internal.FontCache
 
         private static class LegacyArabicFonts
         {
-            private static bool              _usePrivateFontCollectionIsInitialized = false;
+            private static bool              _usePrivateFontCollectionIsInitialized;
             private static object            _staticLock = new object();
             private static bool              _usePrivateFontCollectionForLegacyArabicFonts;
             private static readonly string[] _legacyArabicFonts;

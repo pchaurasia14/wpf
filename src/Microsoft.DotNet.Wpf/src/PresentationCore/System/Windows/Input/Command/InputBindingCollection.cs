@@ -478,8 +478,10 @@ namespace System.Windows.Input
         //------------------------------------------------------
 #region Private Fields
         private List<InputBinding> _innerBindingList;
-        private bool  _isReadOnly = false;
-        private DependencyObject _owner = null;
+        #pragma warning disable 0649
+        private bool  _isReadOnly;
+        #pragma warning restore 0649
+        private DependencyObject _owner;
 #endregion Private Fields
     }
 }

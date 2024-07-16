@@ -35,7 +35,7 @@ namespace System.Windows.Media.Animation
         /// that are accumulated with each repeat.  They are the end values of
         /// the path.
         /// </summary>
-        private Vector _accumulatingOffset = new Vector();
+        private Vector _accumulatingOffset;
         private double _accumulatingAngle;
 
         #endregion

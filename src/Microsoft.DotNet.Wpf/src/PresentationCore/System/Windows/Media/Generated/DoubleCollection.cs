@@ -765,7 +765,7 @@ namespace System.Windows.Media
 
 
         internal FrugalStructList<double> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
 
         #endregion Internal Fields

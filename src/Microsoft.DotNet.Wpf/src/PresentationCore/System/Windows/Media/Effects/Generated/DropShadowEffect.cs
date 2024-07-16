@@ -401,7 +401,7 @@ namespace System.Windows.Media.Effects
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_ShadowDepth = 5.0;
         internal static Color s_Color = Colors.Black;

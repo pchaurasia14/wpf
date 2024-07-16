@@ -441,10 +441,10 @@ namespace System.Windows.Interop
             UpdateCachedSettings();
         }
 
-        private BitmapSourceSafeMILHandle /* IWICBitmapSource */ _unmanagedSource = null;
+        private BitmapSourceSafeMILHandle /* IWICBitmapSource */ _unmanagedSource;
 
         private Int32Rect _sourceRect = Int32Rect.Empty;
-        private BitmapSizeOptions _sizeOptions = null;
+        private BitmapSizeOptions _sizeOptions;
 }
 
     #endregion // InteropBitmap

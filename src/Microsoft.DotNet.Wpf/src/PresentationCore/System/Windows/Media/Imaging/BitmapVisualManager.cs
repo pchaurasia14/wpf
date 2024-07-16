@@ -162,7 +162,7 @@ namespace System.Windows.Media.Imaging
         #endregion
 
         #region Member Variables
-        private RenderTargetBitmap _bitmapTarget = null;
+        private RenderTargetBitmap _bitmapTarget;
         #endregion
     }
     #endregion

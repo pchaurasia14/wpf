@@ -23,7 +23,7 @@ namespace System.Windows.Media
     /// </summary>
     internal class FactoryMaker: IDisposable
     {
-        private bool _disposed = false;
+        private bool _disposed;
         internal FactoryMaker()
         {
             lock (s_factoryMakerLock)
@@ -132,7 +132,7 @@ namespace System.Windows.Media
         /// <summary>
         /// Keeps track of how many instance of current object have been passed out
         /// </summary>
-        private static int s_cInstance = 0;
+        private static int s_cInstance;
 
         /// <summary>
         /// "FactoryMaker" is free threaded. This lock is used to synchronize

@@ -318,7 +318,7 @@ namespace MS.Internal.FontCache
 
         private static readonly object _dpiLock = new object();
         private static int    _dpi;
-        private static bool   _dpiInitialized = false;
+        private static bool   _dpiInitialized;
 
         static Util()
         {
@@ -899,7 +899,7 @@ namespace MS.Internal.FontCache
         private UnsafeNativeMethods.SafeViewOfFileHandle _viewHandle;
         private UnsafeNativeMethods.SafeFileMappingHandle _mappingHandle;
 
-        private bool _disposed = false;
+        private bool _disposed;
     }
 
     internal class LocalizedName

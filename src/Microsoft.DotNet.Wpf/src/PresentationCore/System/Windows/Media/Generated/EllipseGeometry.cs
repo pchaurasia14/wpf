@@ -350,11 +350,11 @@ namespace System.Windows.Media
 
 
 
-        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource = new System.Windows.Media.Composition.DUCE.MultiChannelResource();
+        internal System.Windows.Media.Composition.DUCE.MultiChannelResource _duceResource;
 
         internal const double c_RadiusX = 0.0;
         internal const double c_RadiusY = 0.0;
-        internal static Point s_Center = new Point();
+        internal static Point s_Center;
 
         #endregion Internal Fields
 

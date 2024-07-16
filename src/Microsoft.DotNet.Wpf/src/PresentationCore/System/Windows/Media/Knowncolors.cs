@@ -684,7 +684,7 @@ namespace System.Windows.Media
             return KnownColor.UnknownColor; 
         }
 #if DEBUG
-        private static int s_count = 0;
+        private static int s_count;
 #endif
 
         private static Dictionary<uint, SolidColorBrush> s_solidColorBrushCache = new Dictionary<uint, SolidColorBrush>();

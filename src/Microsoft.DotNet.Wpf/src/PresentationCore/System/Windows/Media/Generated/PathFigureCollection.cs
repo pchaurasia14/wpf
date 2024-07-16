@@ -834,7 +834,7 @@ namespace System.Windows.Media
 
 
         internal FrugalStructList<PathFigure> _collection;
-        internal uint _version = 0;
+        internal uint _version;
 
 
         #endregion Internal Fields

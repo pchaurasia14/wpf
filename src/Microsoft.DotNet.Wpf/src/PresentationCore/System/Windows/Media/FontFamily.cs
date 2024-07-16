@@ -66,7 +66,7 @@ namespace System.Windows.Media
 
         private static volatile FamilyCollection _defaultFamilyCollection = PreCreateDefaultFamilyCollection();
 
-        private static FontFamilyMapCollection _emptyFamilyMaps = null;
+        private static FontFamilyMapCollection _emptyFamilyMaps;
 
 
         /// <summary>

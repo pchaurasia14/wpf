@@ -52,17 +52,17 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Indicates if the hardware did not specify pressure but we have inserted it anyway.
         /// </summary>
-        internal bool UsingFakePressure { get; private set; } = false;
+        internal bool UsingFakePressure { get; private set; }
 
         /// <summary>
         /// The rectangle bounds for the entire device
         /// </summary>
-        internal UnsafeNativeMethods.RECT DeviceRect { get; private set; } = new UnsafeNativeMethods.RECT();
+        internal UnsafeNativeMethods.RECT DeviceRect { get; private set; }
 
         /// <summary>
         /// The rectangle bounds for the display associated with the device
         /// </summary>
-        internal UnsafeNativeMethods.RECT DisplayRect { get; private set; } = new UnsafeNativeMethods.RECT();
+        internal UnsafeNativeMethods.RECT DisplayRect { get; private set; }
 
         #endregion
 

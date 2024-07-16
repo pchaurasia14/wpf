@@ -72,8 +72,8 @@ namespace MS.Internal.Ink.InkSerializedFormat
     /// </summary>
     internal class DeltaDelta : DataXform
     {
-        private long _d_i_1 = 0;
-        private long _d_i_2 = 0;
+        private long _d_i_1;
+        private long _d_i_2;
 
         internal DeltaDelta()
         {

@@ -95,8 +95,8 @@ namespace System.Windows.Media.Imaging
             _isInitialized = false;
         }
 
-        private bool _inInit = false;
-        private bool _isInitialized = false;
+        private bool _inInit;
+        private bool _isInitialized;
     }
 
     #endregion
