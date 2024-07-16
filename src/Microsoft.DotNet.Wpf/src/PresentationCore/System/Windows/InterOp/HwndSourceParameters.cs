@@ -17,7 +17,7 @@ namespace System.Windows.Interop
     ///     This allows flexibility and control of parameters to HwndSource's
     ///     Constructor without many different overloaded constructors.
     /// </summary>
-    public struct HwndSourceParameters
+    public struct HwndSourceParameters : IEquatable<HwndSourceParameters>
     {
         /// <summary>
         ///     Simple Ctor w/ just a WindowName

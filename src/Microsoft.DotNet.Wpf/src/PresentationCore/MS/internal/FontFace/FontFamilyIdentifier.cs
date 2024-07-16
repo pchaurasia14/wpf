@@ -75,7 +75,7 @@ namespace MS.Internal.FontFace
     //      friendly name. In this case, the indexer canonicalizes the requested font family reference 
     //      on demand. However, we still cache the result in the TypefaceMetricsCache.
     // 
-    internal struct FontFamilyIdentifier
+    internal struct FontFamilyIdentifier : IEquatable<FontFamilyIdentifier>
     {
         /// <summary>
         /// FontFamilyIdentifier constructor

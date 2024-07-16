@@ -32,7 +32,7 @@ namespace System.Windows.Media.Animation
     /// <para>A Forever RepeatBehavior specifies that a Timeline will repeat forever.</para>
     /// </summary>
     [TypeConverter(typeof(RepeatBehaviorConverter))]
-    public struct RepeatBehavior : IFormattable
+    public struct RepeatBehavior : IFormattable, IEquatable<RepeatBehavior>
     {
         private double _iterationCount;
         private TimeSpan _repeatDuration;

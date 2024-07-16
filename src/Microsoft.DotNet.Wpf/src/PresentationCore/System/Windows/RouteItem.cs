@@ -12,7 +12,7 @@ namespace System.Windows
     // the target object and
     // list of RoutedEventHandlerInfo that need 
     // to be invoked upon the target object
-    internal struct RouteItem
+    internal struct RouteItem : IEquatable<RouteItem>
     {
         #region Construction
 

@@ -7,7 +7,7 @@ using System;
 namespace System.Windows
 {
     // An item in the source context
-    internal struct SourceItem
+    internal struct SourceItem : IEquatable<SourceItem>
     {
         #region Construction
 

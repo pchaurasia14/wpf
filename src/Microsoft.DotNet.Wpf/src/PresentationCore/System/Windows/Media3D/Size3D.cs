@@ -24,7 +24,7 @@ namespace System.Windows.Media.Media3D
     /// Size3D - A value type which defined a size in terms of non-negative width, 
     /// length, and height.
     /// </summary>
-    public partial struct Size3D
+    public partial struct Size3D : IEquatable<Size3D>
     {
         #region Constructors
 

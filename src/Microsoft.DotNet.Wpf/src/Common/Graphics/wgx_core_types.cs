@@ -454,7 +454,7 @@ internal enum MilCompositingMode
 ///     MilColorF
 /// </summary>
 [StructLayout(LayoutKind.Sequential, Pack=1)]
-internal struct MilColorF
+internal struct MilColorF : IEquatable<MilColorF>
 {
     internal float r;
     internal float g;
@@ -467,9 +467,14 @@ internal struct MilColorF
     }
     public override bool Equals(object obj)
     {
-        return base.Equals(obj);
+        return obj is MilColorF && Equals((MilColorF)obj);
     }
-};
+
+    public bool Equals(MilColorF other)
+    {
+        return a == other.a && r == other.r && g == other.g && b == other.b;
+    }
+}
 
 /// <summary>
 ///     MilPoint2F

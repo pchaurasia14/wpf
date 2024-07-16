@@ -16,7 +16,7 @@ namespace System.Windows.Ink
     /// <summary>
     /// A helper struct that represents a fragment of a stroke spine.
     /// </summary>
-    internal struct StrokeIntersection
+    internal struct StrokeIntersection : IEquatable<StrokeIntersection>
     {
         #region Private statics
         private static StrokeIntersection s_empty = new StrokeIntersection(AfterLast, AfterLast, BeforeFirst, BeforeFirst);
@@ -113,7 +113,12 @@ namespace System.Windows.Ink
             // Check for null and compare run-time types
             if (obj == null || GetType() != obj.GetType())
                 return false;
-            return ((StrokeIntersection)obj == this);
+            return Equals((StrokeIntersection)obj);
+        }
+
+        public bool Equals(StrokeIntersection other)
+        {
+            return _hitSegment == other._hitSegment && _inSegment == other._inSegment;
         }
 
         /// <summary>

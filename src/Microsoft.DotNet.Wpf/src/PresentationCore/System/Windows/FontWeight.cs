@@ -21,7 +21,7 @@ namespace System.Windows
     /// </summary>
     [TypeConverter(typeof(FontWeightConverter))]
     [Localizability(LocalizationCategory.None)]
-    public struct FontWeight : IFormattable
+    public struct FontWeight : IFormattable, IEquatable<FontWeight>
     {
         internal FontWeight(int weight)
         {

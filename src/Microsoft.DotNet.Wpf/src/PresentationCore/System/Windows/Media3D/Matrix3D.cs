@@ -54,7 +54,7 @@ namespace System.Windows.Media.Media3D
     /// C = A.Append(B)
     /// P' = C.Transform(P)
     /// </summary>
-    public partial struct Matrix3D
+    public partial struct Matrix3D : IEquatable<Matrix3D>
     {
         //------------------------------------------------------
         //

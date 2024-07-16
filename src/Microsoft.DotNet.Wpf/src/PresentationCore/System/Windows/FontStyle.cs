@@ -18,7 +18,7 @@ namespace System.Windows
     /// </summary>
     [TypeConverter(typeof(FontStyleConverter))]
     [Localizability(LocalizationCategory.None)]
-    public struct FontStyle : IFormattable
+    public struct FontStyle : IFormattable, IEquatable<FontStyle>
     {
         internal FontStyle(int style)
         {

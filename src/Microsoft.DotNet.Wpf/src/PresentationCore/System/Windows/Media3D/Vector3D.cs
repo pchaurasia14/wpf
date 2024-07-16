@@ -21,7 +21,7 @@ namespace System.Windows.Media.Media3D
     /// <summary>
     /// Vector3D - 3D vector representation.
     /// </summary>
-    public partial struct Vector3D
+    public partial struct Vector3D : IEquatable<Vector3D>
     {
         //------------------------------------------------------
         //

@@ -22,7 +22,7 @@ namespace System.Windows
     ///     used by ContentElement in the Framework 
     ///     to store Instance EventHandlers
     /// </remarks>
-    public struct RoutedEventHandlerInfo
+    public struct RoutedEventHandlerInfo : IEquatable<RoutedEventHandlerInfo>
     {
         #region Construction
         

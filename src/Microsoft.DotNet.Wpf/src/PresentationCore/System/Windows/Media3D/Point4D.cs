@@ -22,7 +22,7 @@ namespace System.Windows.Media.Media3D
     /// Point4D - 4D point representation. 
     /// Defaults to (0,0,0,0).
     /// </summary>
-    public partial struct Point4D
+    public partial struct Point4D : IEquatable<Point4D>
     {
         //------------------------------------------------------
         //

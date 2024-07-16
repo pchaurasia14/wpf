@@ -221,7 +221,7 @@ namespace System.Windows
     }
 
     // Stores ClassHandlers for the given RoutedEvent
-    internal struct ClassHandlers
+    internal struct ClassHandlers : IEquatable<ClassHandlers>
     {
         #region Operations
         

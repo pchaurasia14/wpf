@@ -23,7 +23,7 @@ namespace System.Windows
     /// </summary>
     [TypeConverter(typeof(FontStretchConverter))]
     [Localizability(LocalizationCategory.None)]
-    public struct FontStretch : IFormattable
+    public struct FontStretch : IFormattable, IEquatable<FontStretch>
     {
         internal FontStretch(int stretch)
         {

@@ -61,7 +61,7 @@ namespace System.Windows.Media
     /// <summary>
     /// Describes the bit mask and shift for a specific pixelformat
     /// </summary>
-    public struct PixelFormatChannelMask
+    public struct PixelFormatChannelMask : IEquatable<PixelFormatChannelMask>
     {
         internal PixelFormatChannelMask(byte[] mask)
         {
@@ -126,8 +126,12 @@ namespace System.Windows.Media
         /// </summary>
         public override bool Equals(Object obj)
         {
-            // Can't use "as" since we're looking for a value type
-            return obj is PixelFormatChannelMask ? this == (PixelFormatChannelMask)obj : false;
+            return obj is PixelFormatChannelMask other ? Equals(this, other) : false;
+        }
+
+        public bool Equals(PixelFormatChannelMask other)
+        {
+            return Equals(this, other);
         }
 
         /// <summary>

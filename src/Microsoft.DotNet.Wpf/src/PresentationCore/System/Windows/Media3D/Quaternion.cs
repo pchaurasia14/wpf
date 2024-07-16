@@ -51,7 +51,7 @@ namespace System.Windows.Media.Media3D
     /// quaternions to achieve a smooth, reliable interpolation.
     /// The default quaternion is the identity.
     /// </summary>
-    public partial struct Quaternion : IFormattable
+    public partial struct Quaternion : IFormattable, IEquatable<Quaternion>
     {
         //------------------------------------------------------
         //

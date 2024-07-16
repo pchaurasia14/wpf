@@ -22,7 +22,7 @@ namespace MS.Internal.FontFace
     /// <summary>
     /// Font face style used for style matching of face
     /// </summary>
-    internal struct MatchingStyle
+    internal struct MatchingStyle : IEquatable<MatchingStyle>
     {
         private Vector              _vector;
 
@@ -67,11 +67,13 @@ namespace MS.Internal.FontFace
         /// </summary>
         public override bool Equals(Object o)
         {
-            if(o == null)
-                return false;
+            return o is MatchingStyle other && Equals(other);
+        }
 
-            return o is MatchingStyle && this == (MatchingStyle)o;
-}
+        public bool Equals(MatchingStyle other)
+        {
+            return _vector == other._vector;
+        }
 
         /// <summary>
         /// Get hash code for this style
@@ -155,7 +157,7 @@ namespace MS.Internal.FontFace
         /// Using 3D types here would also mean introducing 3D types to FontCacheService
         /// code which logically should have nothing to do with it.
         /// </remarks>
-        private struct Vector
+        private struct Vector : IEquatable<Vector>
         {
             private double _x, _y, _z;
 
@@ -247,21 +249,12 @@ namespace MS.Internal.FontFace
             /// </summary>
             public override bool Equals(Object o)
             {
-                if(null == o)
-                {
-                    return false;
-                }
+               return o is Vector other && Equals(other);
+            }
 
-                if(o is Vector)
-                {
-                    Vector vector = (Vector)o;
-
-                    return (this == vector);
-                }
-                else
-                {
-                    return false;
-                }
+            public bool Equals(Vector other)
+            {
+                return _x == other._x && _y == other._y && _z == other._z;
             }
 
 

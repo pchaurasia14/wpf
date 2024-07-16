@@ -29,7 +29,7 @@ namespace System.Windows.Media.Media3D
     /// location (Point3D) and rectangle's size (Size3D). As a result, Rect3D cannot have 
     /// negative sizes.
     /// </summary>
-    public partial struct Rect3D: IFormattable
+    public partial struct Rect3D: IFormattable, IEquatable<Rect3D>
     {
         //------------------------------------------------------
         //

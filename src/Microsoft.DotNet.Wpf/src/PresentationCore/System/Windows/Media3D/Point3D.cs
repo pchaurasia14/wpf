@@ -22,7 +22,7 @@ namespace System.Windows.Media.Media3D
     /// Point3D - 3D point representation. 
     /// Defaults to (0,0,0).
     /// </summary>
-    public partial struct Point3D
+    public partial struct Point3D : IEquatable<Point3D>
     {
         //------------------------------------------------------
         //

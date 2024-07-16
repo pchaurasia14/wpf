@@ -265,8 +265,8 @@ namespace System.Windows.Media
         }
 
         /// <summary>
-        /// Creates a string representation of this object based on the format string 
-        /// and IFormatProvider passed in.  
+        /// Creates a string representation of this object based on the format string
+        /// and IFormatProvider passed in.
         /// If the provider is null, the CurrentCulture is used.
         /// See the documentation for IFormattable for more information.
         /// </summary>
@@ -418,7 +418,7 @@ namespace System.Windows.Media
             {
                 Color c1 = new Color();
                 c1.context = color1.context;
-                
+
                 #pragma warning suppress 6506 // c1.context is obviously not null - both color1.context AND color2.context are not null
                 c1.nativeColorValue = new float[c1.context.NumChannels];
                 for (int i = 0; i < c1.nativeColorValue.GetLength(0); i++)
@@ -1147,7 +1147,7 @@ namespace System.Windows.Media
         [MarshalAs(UnmanagedType.Interface)]
         ColorContext context;
 
-        private struct MILColorF // this structure is the "milrendertypes.h" structure and should be identical for performance
+        private struct MILColorF : IEquatable<MILColorF>// this structure is the "milrendertypes.h" structure and should be identical for performance
         {
             public float a, r, g, b;
 
@@ -1157,7 +1157,12 @@ namespace System.Windows.Media
             }
             public override bool Equals(object obj)
             {
-                return base.Equals(obj);
+                return obj is MILColorF other && Equals(other);
+            }
+
+            public bool Equals(MILColorF other)
+            {
+                return (a == other.a) && (r == other.r) && (g == other.g) && (b == other.b);
             }
         };
 

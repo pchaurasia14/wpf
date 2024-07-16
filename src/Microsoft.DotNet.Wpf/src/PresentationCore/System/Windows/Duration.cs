@@ -18,7 +18,7 @@ namespace System.Windows
     /// This structure may represent a TimeSpan, Automatic, or Forever value.
     /// </summary>
     [TypeConverter(typeof(DurationConverter))]
-    public struct Duration
+    public struct Duration : IEquatable<Duration>
     {
         private TimeSpan _timeSpan;
         private DurationType _durationType;
