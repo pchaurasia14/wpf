@@ -2533,7 +2533,7 @@ namespace System.Windows.Media
         /// </summary>
         protected virtual Visual GetVisualChild(int index)
         {
-           throw new ArgumentOutOfRangeException("index", index, SR.Visual_ArgumentOutOfRange);
+           throw new ArgumentOutOfRangeException(nameof(index), index, SR.Visual_ArgumentOutOfRange);
         }
 
         /// <summary>

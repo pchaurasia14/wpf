@@ -80,7 +80,7 @@ namespace System.Windows.Media
                 {
                     if (!(context.Instance is Brush))
                     {
-                        throw new ArgumentException(SR.Format(SR.General_Expected_Type, "Brush"), "context");
+                        throw new ArgumentException(SR.Format(SR.General_Expected_Type, "Brush"), nameof(context));
                     }
 
                     Brush value = (Brush)context.Instance;

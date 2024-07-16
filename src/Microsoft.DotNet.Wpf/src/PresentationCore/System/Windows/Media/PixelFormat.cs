@@ -334,7 +334,7 @@ namespace System.Windows.Media
 
                 default:
                     throw new System.ArgumentException (SR.Format(SR.Image_BadPixelFormat, pixelFormatString),
-                            "pixelFormatString");
+                            nameof(pixelFormatString));
             }
 
             _format = format;
@@ -427,7 +427,7 @@ namespace System.Windows.Media
                     return WICPixelFormatGUIDs.WICPixelFormat32bppCMYK;
             }
 
-            throw new System.ArgumentException (SR.Format(SR.Image_BadPixelFormat, format), "format");
+            throw new System.ArgumentException (SR.Format(SR.Image_BadPixelFormat, format), nameof(format));
         }
 
         private PixelFormatFlags FormatFlags

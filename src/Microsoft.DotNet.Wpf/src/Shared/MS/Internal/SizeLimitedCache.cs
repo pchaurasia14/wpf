@@ -94,11 +94,11 @@ namespace MS.Internal
 
             if ( (object)key == null)
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
             if ( (object)resource == null)
             {
-                throw new ArgumentNullException("resource");
+                throw new ArgumentNullException(nameof(resource));
             }
 
             // note: [] throws, thus we should check if its in the dictionary first.
@@ -159,7 +159,7 @@ namespace MS.Internal
         {
             if ( (object)key == null)
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             // note: [] throws, thus we should check if its in the dictionary first.
@@ -195,7 +195,7 @@ namespace MS.Internal
         {
             if ( (object)key == null)
             {
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
             }
 
             // note: [] throws, thus we should check if its in the dictionary first.

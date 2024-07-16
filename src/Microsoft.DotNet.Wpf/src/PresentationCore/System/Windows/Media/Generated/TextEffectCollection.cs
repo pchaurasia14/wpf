@@ -964,7 +964,7 @@ namespace System.Windows.Media
             }
             else
             {
-                throw new ArgumentNullException("collection");
+                throw new ArgumentNullException(nameof(collection));
             }
         }
 

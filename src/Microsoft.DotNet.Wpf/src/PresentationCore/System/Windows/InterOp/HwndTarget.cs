@@ -539,21 +539,21 @@ namespace System.Windows.Interop
             {
                 throw new ArgumentException(
                     SR.HwndTarget_InvalidWindowHandle,
-                    "hwnd"
+                    nameof(hwnd)
                     );
             }
             else if (processId != SafeNativeMethods.GetCurrentProcessId())
             {
                 throw new ArgumentException(
                     SR.HwndTarget_InvalidWindowProcess,
-                    "hwnd"
+                    nameof(hwnd)
                     );
             }
             else if (threadId != SafeNativeMethods.GetCurrentThreadId())
             {
                 throw new ArgumentException(
                     SR.HwndTarget_InvalidWindowThread,
-                    "hwnd"
+                    nameof(hwnd)
                     );
             }
 

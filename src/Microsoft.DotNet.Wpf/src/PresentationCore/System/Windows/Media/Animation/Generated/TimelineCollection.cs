@@ -977,7 +977,7 @@ namespace System.Windows.Media.Animation
             }
             else
             {
-                throw new ArgumentNullException("collection");
+                throw new ArgumentNullException(nameof(collection));
             }
         }
 
