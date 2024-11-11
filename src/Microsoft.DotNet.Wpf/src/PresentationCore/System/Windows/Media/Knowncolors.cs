@@ -8,6 +8,7 @@ namespace MS.Internal.Markup
 #else
 using System.Windows.Media;
 using MS.Internal;
+using System.Runtime.CompilerServices;
 
 using System;
 
@@ -175,26 +176,29 @@ namespace System.Windows.Media
             KnownColor[] knownColorValues = Enum.GetValues<KnownColor>();
             foreach (KnownColor colorValue in knownColorValues)
             {
-                string aRGBString = String.Format("#{0,8:X8}", (uint)colorValue);
+                string aRGBString = ToArgbString((uint)colorValue);
                 s_knownArgbColors[aRGBString] = colorValue;
             }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static string ToArgbString(uint colorValue)
+        {
+            return string.Create(9, colorValue, (span, value) =>
+            {
+                span[0] = '#';
+                value.TryFormat(span[1..], out _, "X8");
+            });
         }
 
         /// Return the solid color brush from a color string.  If there's no match, null
         public static SolidColorBrush ColorStringToKnownBrush(string s)
         {
-            if (null != s)
-            {
-                KnownColor result = ColorStringToKnownColor(s);
+            if (string.IsNullOrEmpty(s)) return null;
 
-                // If the result is UnknownColor, that means this string wasn't found
-                if (result != KnownColor.UnknownColor)
-                {
-                    // Otherwise, return the appropriate SolidColorBrush
-                    return SolidColorBrushFromUint((uint)result);
-                }
-            }
-            return null;
+            // If the result is UnknownColor, that means this string wasn't found
+            // Otherwise, return the appropriate SolidColorBrush
+            return ColorStringToKnownColor(s) != KnownColor.UnknownColor ? SolidColorBrushFromUint((uint)result) : null;
         }
 
         public static bool IsKnownSolidColorBrush(SolidColorBrush scp)
