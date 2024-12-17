@@ -1,10 +1,11 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 
 using MS.Win32.Pointer;
 using System.Windows.Media;
+using WinInputPointer = Windows.Win32.UI.Input.Pointer;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -241,7 +242,7 @@ namespace System.Windows.Input.StylusPointer
             try
             {
                 // Queue up the latest message for processing
-                UnsafeNativeMethods.BufferPointerPacketsInteractionContext(_interactionContext, 1, new UnsafeNativeMethods.POINTER_INFO[] { _stylusDevice.CurrentPointerInfo });
+                UnsafeNativeMethods.BufferPointerPacketsInteractionContext(_interactionContext, 1, new WinInputPointer.POINTER_INFO[] { _stylusDevice.CurrentPointerInfo });
 
                 // Hover processing should occur directly from message receipt.
                 // Do this prior to the IC engine processing so HoverEnter/Leave has priority.

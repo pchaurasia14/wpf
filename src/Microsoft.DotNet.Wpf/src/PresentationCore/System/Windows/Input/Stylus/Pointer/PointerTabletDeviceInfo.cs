@@ -1,10 +1,12 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 
 using MS.Win32.Pointer;
 using System.Collections.ObjectModel;
+using WinPointer = Windows.Win32.UI.Controls;
+using WinFoundation = Windows.Win32.Foundation;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -18,7 +20,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Store the WM_POINTER device information directly
         /// </summary>
-        private UnsafeNativeMethods.POINTER_DEVICE_INFO _deviceInfo;
+        private WinPointer.POINTER_DEVICE_INFO _deviceInfo;
 
         #endregion
 
@@ -27,7 +29,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The pointer properties supported by this TabletDevice
         /// </summary>
-        internal UnsafeNativeMethods.POINTER_DEVICE_PROPERTY[] SupportedPointerProperties { get; private set; }
+        internal WinPointer.POINTER_DEVICE_PROPERTY[] SupportedPointerProperties { get; private set; }
 
         /// <summary>
         /// The index of the start of button properties in SupportedPointerProperties.
@@ -53,12 +55,12 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The rectangle bounds for the entire device
         /// </summary>
-        internal UnsafeNativeMethods.RECT DeviceRect { get; private set; } = new UnsafeNativeMethods.RECT();
+        internal WinFoundation.RECT DeviceRect { get; private set; } = new WinFoundation.RECT();
 
         /// <summary>
         /// The rectangle bounds for the display associated with the device
         /// </summary>
-        internal UnsafeNativeMethods.RECT DisplayRect { get; private set; } = new UnsafeNativeMethods.RECT();
+        internal WinFoundation.RECT DisplayRect { get; private set; } = new WinFoundation.RECT();
 
         #endregion
 
@@ -68,13 +70,13 @@ namespace System.Windows.Input.StylusPointer
         /// Constructor to convert WM_POINTER stack device info to the more generic TabletDeviceInfo
         /// </summary>
         /// <param name="deviceInfo">The WM_POINTER device info</param>
-        internal PointerTabletDeviceInfo(int id, UnsafeNativeMethods.POINTER_DEVICE_INFO deviceInfo)
+        internal PointerTabletDeviceInfo(int id, WinPointer.POINTER_DEVICE_INFO deviceInfo)
         {
             _deviceInfo = deviceInfo;
 
             Id = id;
-            Name = _deviceInfo.productString;
-            PlugAndPlayId = _deviceInfo.productString;
+            Name = _deviceInfo.productString.ToString();
+            PlugAndPlayId = _deviceInfo.productString.ToString();
         }
 
         /// <summary>
@@ -114,24 +116,24 @@ namespace System.Windows.Input.StylusPointer
         {
             switch (_deviceInfo.pointerDeviceType)
             {
-                case UnsafeNativeMethods.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_EXTERNAL_PEN:
+                case WinPointer.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_EXTERNAL_PEN:
                     {
                         DeviceType = TabletDeviceType.Stylus;
                     }
                     break;
-                case UnsafeNativeMethods.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_INTEGRATED_PEN:
+                case WinPointer.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_INTEGRATED_PEN:
                     {
                         DeviceType = TabletDeviceType.Stylus;
                         HardwareCapabilities |= TabletHardwareCapabilities.Integrated;
                     }
                     break;
-                case UnsafeNativeMethods.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_TOUCH:
+                case WinPointer.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_TOUCH:
                     {
                         DeviceType = TabletDeviceType.Touch;
                         HardwareCapabilities |= TabletHardwareCapabilities.Integrated;
                     }
                     break;
-                case UnsafeNativeMethods.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_TOUCH_PAD:
+                case WinPointer.POINTER_DEVICE_TYPE.POINTER_DEVICE_TYPE_TOUCH_PAD:
                     {
                         DeviceType = TabletDeviceType.Touch;
                     }
@@ -164,7 +166,7 @@ namespace System.Windows.Input.StylusPointer
         /// backfilling of pressure data further up (as in towards the public boundary) and the deeper
         /// portions of the stack just worry about querying device capabilities.
         /// </remarks>
-        private bool TryInitializeSupportedStylusPointProperties()
+        private unsafe bool TryInitializeSupportedStylusPointProperties()
         {
             bool success = false;
 
@@ -175,13 +177,16 @@ namespace System.Windows.Input.StylusPointer
             UsingFakePressure = true;
 
             // Retrieve all properties from the WM_POINTER stack
-            success = UnsafeNativeMethods.GetPointerDeviceProperties(Device, ref propCount, null);
+            success = PInvokeCore.GetPointerDeviceProperties((WinFoundation.HANDLE)Device, ref propCount, null);
 
             if (success)
             {
-                SupportedPointerProperties = new UnsafeNativeMethods.POINTER_DEVICE_PROPERTY[propCount];
+                SupportedPointerProperties = new WinPointer.POINTER_DEVICE_PROPERTY[propCount];
 
-                success = UnsafeNativeMethods.GetPointerDeviceProperties(Device, ref propCount, SupportedPointerProperties);
+                fixed (WinPointer.POINTER_DEVICE_PROPERTY* pSupportedPointerProps = SupportedPointerProperties)
+                {
+                    success = PInvokeCore.GetPointerDeviceProperties((WinFoundation.HANDLE)Device, ref propCount, pSupportedPointerProps);
+                }
 
                 if (success)
                 {
@@ -196,13 +201,13 @@ namespace System.Windows.Input.StylusPointer
                     List<StylusPointProperty> buttonProperties = new List<StylusPointProperty>();
 
                     // Prepare a location for X and Y.  Pressure does not need a location as it will be added later if applicable.
-                    List<UnsafeNativeMethods.POINTER_DEVICE_PROPERTY> supportedProperties = new List<UnsafeNativeMethods.POINTER_DEVICE_PROPERTY>()
+                    List<WinPointer.POINTER_DEVICE_PROPERTY> supportedProperties = new List<WinPointer.POINTER_DEVICE_PROPERTY>()
                     {
-                        new UnsafeNativeMethods.POINTER_DEVICE_PROPERTY(),
-                        new UnsafeNativeMethods.POINTER_DEVICE_PROPERTY(),
+                        new WinPointer.POINTER_DEVICE_PROPERTY(),
+                        new WinPointer.POINTER_DEVICE_PROPERTY(),
                     };
 
-                    List<UnsafeNativeMethods.POINTER_DEVICE_PROPERTY> supportedButtonProperties = new List<UnsafeNativeMethods.POINTER_DEVICE_PROPERTY>();
+                    List<WinPointer.POINTER_DEVICE_PROPERTY> supportedButtonProperties = new List<WinPointer.POINTER_DEVICE_PROPERTY>();
 
                     bool seenX = false, seenY = false, seenPressure = false;
 
@@ -287,10 +292,10 @@ namespace System.Windows.Input.StylusPointer
         {
             bool success = false;
 
-            var deviceRect = new UnsafeNativeMethods.RECT();
-            var displayRect = new UnsafeNativeMethods.RECT();
+            var deviceRect = new WinFoundation.RECT();
+            var displayRect = new WinFoundation.RECT();
 
-            success = UnsafeNativeMethods.GetPointerDeviceRects(_deviceInfo.device, ref deviceRect, ref displayRect);
+            success = PInvokeCore.GetPointerDeviceRects(_deviceInfo.device, out deviceRect, out displayRect);
 
             if (success)
             {

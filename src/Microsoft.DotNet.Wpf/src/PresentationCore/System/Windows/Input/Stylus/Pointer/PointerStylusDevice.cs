@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
@@ -7,6 +7,8 @@ using MS.Win32.Pointer;
 using System.Windows.Input.StylusPlugIns;
 using System.Windows.Interop;
 using System.Windows.Media;
+using WinPointer = Windows.Win32.UI.Controls;
+using WinInputPointer = Windows.Win32.UI.Input.Pointer;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -82,7 +84,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The cursor info associated with this StylusDevice
         /// </summary>
-        private UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO _cursorInfo = new UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO();
+        private WinPointer.POINTER_DEVICE_CURSOR_INFO _cursorInfo = new WinPointer.POINTER_DEVICE_CURSOR_INFO();
 
         /// <summary>
         /// The TabletDevice that owns this
@@ -103,7 +105,7 @@ namespace System.Windows.Input.StylusPointer
         /// </summary>
         /// <param name="tabletDevice">The TabletDevice that owns this</param>
         /// <param name="cursorInfo">The cursor info for this stylus device</param>
-        internal PointerStylusDevice(PointerTabletDevice tabletDevice, UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO cursorInfo)
+        internal PointerStylusDevice(PointerTabletDevice tabletDevice, WinPointer.POINTER_DEVICE_CURSOR_INFO cursorInfo)
         {
             _cursorInfo = cursorInfo;
             _tabletDevice = tabletDevice;
@@ -185,7 +187,7 @@ namespace System.Windows.Input.StylusPointer
 
         #region Properties
 
-        internal UnsafeNativeMethods.POINTER_INFO CurrentPointerInfo { get { return _pointerData.Info; } }
+        internal WinInputPointer.POINTER_INFO CurrentPointerInfo { get { return _pointerData.Info; } }
 
         internal HwndPointerInputProvider CurrentPointerProvider
         {
@@ -205,7 +207,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_NEW) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_NEW) ?? false;
             }
         }
 
@@ -213,7 +215,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INCONTACT) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_INCONTACT) ?? false;
             }
         }
 
@@ -221,7 +223,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_PRIMARY) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_PRIMARY) ?? false;
             }
         }
 
@@ -229,7 +231,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_FIRSTBUTTON) ?? false;
             }
         }
 
@@ -237,7 +239,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_SECONDBUTTON) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_SECONDBUTTON) ?? false;
             }
         }
 
@@ -245,7 +247,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_THIRDBUTTON) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_THIRDBUTTON) ?? false;
             }
         }
 
@@ -253,7 +255,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_FOURTHBUTTON) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_FOURTHBUTTON) ?? false;
             }
         }
 
@@ -261,7 +263,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_FIFTHBUTTON) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_FIFTHBUTTON) ?? false;
             }
         }
 
@@ -277,7 +279,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_DOWN) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_DOWN) ?? false;
             }
         }
 
@@ -285,7 +287,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_UPDATE) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_UPDATE) ?? false;
             }
         }
 
@@ -293,7 +295,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_UP) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_UP) ?? false;
             }
         }
 
@@ -301,7 +303,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_CAPTURECHANGED) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_CAPTURECHANGED) ?? false;
             }
         }
 
@@ -309,7 +311,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_HASTRANSFORM) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_HASTRANSFORM) ?? false;
             }
         }
 
@@ -413,7 +415,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return (_cursorInfo.cursor == UnsafeNativeMethods.POINTER_DEVICE_CURSOR_TYPE.POINTER_DEVICE_CURSOR_TYPE_ERASER)
+                return (_cursorInfo.cursor == WinPointer.POINTER_DEVICE_CURSOR_TYPE.POINTER_DEVICE_CURSOR_TYPE_ERASER)
                     ? "Eraser"
                     : "Stylus";
             }
@@ -441,8 +443,8 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return !(_pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INCONTACT) ?? false)
-                    && (_pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INRANGE) ?? false);
+                return !(_pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_INCONTACT) ?? false)
+                    && (_pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_INRANGE) ?? false);
             }
         }
 
@@ -465,7 +467,7 @@ namespace System.Windows.Input.StylusPointer
         {
             get
             {
-                return _pointerData?.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INRANGE) ?? false;
+                return _pointerData?.Info.pointerFlags.HasFlag(WinInputPointer.POINTER_FLAGS.POINTER_FLAG_INRANGE) ?? false;
             }
         }
 
@@ -613,13 +615,13 @@ namespace System.Windows.Input.StylusPointer
                 Point ptDevice = PointUtil.ScreenToClient(rawScreenPoint, _inputSource);
 
                 // GlobalHitTest always returns an IInputElement, so we are sure to have one.
-                IInputElement stylusOver = Input.StylusDevice.GlobalHitTest(_inputSource, ptDevice);
+                IInputElement stylusOver = StylusDevice.GlobalHitTest(_inputSource, ptDevice);
                 bool fOffsetChanged = false;
 
                 if (_stylusOver == stylusOver)
                 {
                     Point ptOffset = GetPosition(stylusOver);
-                    fOffsetChanged = MS.Internal.DoubleUtil.AreClose(ptOffset.X, _rawElementRelativePosition.X) == false || MS.Internal.DoubleUtil.AreClose(ptOffset.Y, _rawElementRelativePosition.Y) == false;
+                    fOffsetChanged = DoubleUtil.AreClose(ptOffset.X, _rawElementRelativePosition.X) == false || DoubleUtil.AreClose(ptOffset.Y, _rawElementRelativePosition.Y) == false;
                 }
 
                 if (fOffsetChanged || _stylusOver != stylusOver)
@@ -1081,7 +1083,7 @@ namespace System.Windows.Input.StylusPointer
                         {
                             Point pt = GetPosition(null); // relative to window (root element)
                             pt = _pointerLogic.DeviceUnitsFromMeasureUnits(_inputSource, pt); // change back to device coords.
-                            IInputElement currentOver = Input.StylusDevice.GlobalHitTest(_inputSource, pt);
+                            IInputElement currentOver = StylusDevice.GlobalHitTest(_inputSource, pt);
                             ChangeStylusOver(currentOver);
                         }
                     }

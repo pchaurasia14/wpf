@@ -1,0 +1,10 @@
+GetPointerDevices
+GetPointerDeviceCursors
+GetPointerInfo
+GetPointerInfoHistory
+GetPointerDeviceProperties
+GetPointerDeviceRects
+GetPointerCursorId
+GetPointerPenInfo
+GetPointerTouchInfo
+GetRawPointerDeviceData
