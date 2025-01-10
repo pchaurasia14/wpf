@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
@@ -6,6 +6,7 @@
 using MS.Win32.Pointer;
 using System.ComponentModel;
 using System.Windows.Input.Tracing;
+using WinPointer = Windows.Win32.UI.Controls;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -68,7 +69,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Retrieves the latest device information from connected touch devices.
         /// </summary>
-        internal void Refresh()
+        internal unsafe void Refresh()
         {
             try
             {
@@ -82,14 +83,17 @@ namespace System.Windows.Input.StylusPointer
 
                 // Pattern is to first get the count, then declare an array of that size
                 // which is then marshaled via the second call with the proper data.
-                IsValid = UnsafeNativeMethods.GetPointerDevices(ref deviceCount, null);
+                IsValid = PInvokeCore.GetPointerDevices(ref deviceCount, null);
 
                 if (IsValid)
                 {
-                    UnsafeNativeMethods.POINTER_DEVICE_INFO[] deviceInfos
-                         = new UnsafeNativeMethods.POINTER_DEVICE_INFO[deviceCount];
+                    WinPointer.POINTER_DEVICE_INFO[] deviceInfos
+                         = new WinPointer.POINTER_DEVICE_INFO[deviceCount];
 
-                    IsValid = UnsafeNativeMethods.GetPointerDevices(ref deviceCount, deviceInfos);
+                    fixed (WinPointer.POINTER_DEVICE_INFO* ptrDeviceInfos = deviceInfos)
+                    {
+                        IsValid = PInvokeCore.GetPointerDevices(ref deviceCount, ptrDeviceInfos);
+                    }
 
                     if (IsValid)
                     {

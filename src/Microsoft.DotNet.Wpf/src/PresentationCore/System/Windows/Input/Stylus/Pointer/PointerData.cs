@@ -1,9 +1,11 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 
-using static MS.Win32.Pointer.UnsafeNativeMethods;
+// using static MS.Win32.Pointer.UnsafeNativeMethods;
+using WinPointer = Windows.Win32.UI.Input.Pointer;
+using WinPointerInput = Windows.Win32.UI.WindowsAndMessaging;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -17,22 +19,22 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Standard pointer information
         /// </summary>
-        private POINTER_INFO _info;
+        private WinPointer.POINTER_INFO _info;
 
         /// <summary>
         /// Pointer information specific to a touch device
         /// </summary>
-        private POINTER_TOUCH_INFO _touchInfo;
+        private WinPointer.POINTER_TOUCH_INFO _touchInfo;
 
         /// <summary>
         /// Pointer information specific to a pen device
         /// </summary>
-        private POINTER_PEN_INFO _penInfo;
+        private WinPointer.POINTER_PEN_INFO _penInfo;
 
         /// <summary>
         /// The full history available for the current pointer (used for coalesced input)
         /// </summary>
-        private POINTER_INFO[] _history;
+        private WinPointer.POINTER_INFO[] _history;
 
         #endregion
 
@@ -46,7 +48,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Standard pointer information
         /// </summary>
-        internal POINTER_INFO Info
+        internal WinPointer.POINTER_INFO Info
         {
             get
             {
@@ -57,7 +59,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Pointer information specific to a touch device
         /// </summary>
-        internal POINTER_TOUCH_INFO TouchInfo
+        internal WinPointer.POINTER_TOUCH_INFO TouchInfo
         {
             get
             {
@@ -68,7 +70,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Pointer information specific to a pen device
         /// </summary>
-        internal POINTER_PEN_INFO PenInfo
+        internal WinPointer.POINTER_PEN_INFO PenInfo
         {
             get
             {
@@ -79,7 +81,7 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// The full history available for the current pointer (used for coalesced input)
         /// </summary>
-        internal POINTER_INFO[] History
+        internal WinPointer.POINTER_INFO[] History
         {
             get
             {
@@ -96,31 +98,38 @@ namespace System.Windows.Input.StylusPointer
         /// it locally.
         /// </summary>
         /// <param name="pointerId">The id of the pointer message</param>
-        internal PointerData(uint pointerId)
+        internal unsafe PointerData(uint pointerId)
         {
-            if (IsValid = GetPointerInfo(pointerId, ref _info))
+            if (IsValid = PInvokeCore.GetPointerInfo(pointerId, out _info))
             {
-                _history = new POINTER_INFO[_info.historyCount];
+                _history = new WinPointer.POINTER_INFO[_info.historyCount];
 
-                // Fill the pointer history
-                // If we fail just return a blank history
-                if (!GetPointerInfoHistory(pointerId, ref _info.historyCount, _history))
+                bool isSuccessful = true;
+
+                fixed (WinPointer.POINTER_INFO* ptrHistory = _history)
                 {
-                    _history = Array.Empty<POINTER_INFO>();
+                    // Fill the pointer history
+                    // If we fail just return a blank history
+                    if (!PInvokeCore.GetPointerInfoHistory(pointerId, ref _info.historyCount, ptrHistory))
+                    {
+                        isSuccessful = false;
+                    }
                 }
+
+                if(!isSuccessful) _history = Array.Empty<WinPointer.POINTER_INFO>();
 
                 switch (_info.pointerType)
                 {
-                    case POINTER_INPUT_TYPE.PT_TOUCH:
+                    case WinPointerInput.POINTER_INPUT_TYPE.PT_TOUCH:
                         {
                             // If we have a touch device, pull the touch specific information down
-                            IsValid &= GetPointerTouchInfo(pointerId, ref _touchInfo);
+                            IsValid &= PInvokeCore.GetPointerTouchInfo(pointerId, out _touchInfo);
                         }
                         break;
-                    case POINTER_INPUT_TYPE.PT_PEN:
+                    case WinPointerInput.POINTER_INPUT_TYPE.PT_PEN:
                         {
                             // Otherwise we have a pen device, so pull down pen specific information
-                            IsValid &= GetPointerPenInfo(pointerId, ref _penInfo);
+                            IsValid &= PInvokeCore.GetPointerPenInfo(pointerId, out _penInfo);
                         }
                         break;
                     default:

@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
@@ -10,13 +10,16 @@ using System.Windows.Input;
 using System.Windows.Input.StylusPointer;
 using System.Windows.Media;
 using System.Windows.Threading;
+using WinControls = Windows.Win32.UI.Controls;
+using WinPointer = Windows.Win32.UI.Input.Pointer;
+using WinPointerType = Windows.Win32.UI.WindowsAndMessaging;
 
 namespace System.Windows.Interop
 {
     /// <summary>
     /// Implements an input provider per hwnd for WM_POINTER messages
     /// </summary>
-    internal sealed class HwndPointerInputProvider : DispatcherObject, IStylusInputProvider
+    internal sealed class  : DispatcherObject, IStylusInputProvider
     {
         #region Member Variables
 
@@ -129,7 +132,7 @@ namespace System.Windows.Interop
         /// <param name="pointerData">The current pointer info</param>
         /// <param name="tabletDevice">The current TabletDevice</param>
         /// <returns>An array of raw pointer data</returns>
-        private int[] GenerateRawStylusData(PointerData pointerData, PointerTabletDevice tabletDevice)
+        private unsafe int[] GenerateRawStylusData(PointerData pointerData, PointerTabletDevice tabletDevice)
         {
             // Since we are copying raw pointer data, we want to use every property supported by this pointer.
             // We may never access some of the unknown (unsupported by WPF) properties, but they should be there
@@ -141,52 +144,58 @@ namespace System.Windows.Interop
 
             int[] data = Array.Empty<int>();
 
-            // Get the raw data formatted to our supported properties
-            if (UnsafeNativeMethods.GetRawPointerDeviceData(
-                pointerData.Info.pointerId,
-                pointerData.Info.historyCount,
-                (uint)pointerPropertyCount,
-                tabletDevice.DeviceInfo.SupportedPointerProperties,
-                rawPointerData))
+            fixed (int* rawPointerDataPtr = rawPointerData)
+            fixed (WinControls.POINTER_DEVICE_PROPERTY* properties = tabletDevice.DeviceInfo.SupportedPointerProperties)
             {
-                // Get the X and Y offsets to translate device coords to the origin of the hwnd
-                int originOffsetX, originOffsetY;
-                GetOriginOffsetsLogical(out originOffsetX, out originOffsetY);
 
-                int numButtons = tabletDevice.DeviceInfo.SupportedPointerProperties.Length - tabletDevice.DeviceInfo.SupportedButtonPropertyIndex;
-
-                int rawDataPointSize = (numButtons > 0) ? pointerPropertyCount - numButtons + 1 : pointerPropertyCount;
-
-                // Instead of a single entry for each button we use one entry for all buttons so reflect that in the raw data size
-                data = new int[rawDataPointSize * pointerData.Info.historyCount];
-
-                // Skip to the beginning of each stylus point in both the target WPF array and the pointer data array.
-                // The pointer data is arranged from last point to first point in the history while WPF data is arranged
-                // the reverse of this (in whole stylus points).  Therefore we need to fill backward from pointer data
-                // via stylus point strides.
-                for (int i = 0, j = rawPointerData.Length - pointerPropertyCount; i < data.Length; i += rawDataPointSize, j -= pointerPropertyCount)
+                // Get the raw data formatted to our supported properties
+                if (PInvokeCore.GetRawPointerDeviceData(
+                    pointerData.Info.pointerId,
+                    pointerData.Info.historyCount,
+                    (uint)pointerPropertyCount,
+                    properties,
+                    rawPointerDataPtr))
                 {
-                    Array.Copy(rawPointerData, j, data, i, rawDataPointSize);
+                    // Get the X and Y offsets to translate device coords to the origin of the hwnd
+                    int originOffsetX, originOffsetY;
+                    GetOriginOffsetsLogical(out originOffsetX, out originOffsetY);
 
-                    // Apply offsets from the origin to raw pointer data here
-                    data[i + StylusPointDescription.RequiredXIndex] -= originOffsetX;
-                    data[i + StylusPointDescription.RequiredYIndex] -= originOffsetY;
+                    int numButtons = tabletDevice.DeviceInfo.SupportedPointerProperties.Length - tabletDevice.DeviceInfo.SupportedButtonPropertyIndex;
 
-                    if (numButtons > 0)
+                    int rawDataPointSize = (numButtons > 0) ? pointerPropertyCount - numButtons + 1 : pointerPropertyCount;
+
+                    // Instead of a single entry for each button we use one entry for all buttons so reflect that in the raw data size
+                    data = new int[rawDataPointSize * pointerData.Info.historyCount];
+
+                    // Skip to the beginning of each stylus point in both the target WPF array and the pointer data array.
+                    // The pointer data is arranged from last point to first point in the history while WPF data is arranged
+                    // the reverse of this (in whole stylus points).  Therefore we need to fill backward from pointer data
+                    // via stylus point strides.
+                    for (int i = 0, j = rawPointerData.Length - pointerPropertyCount; i < data.Length; i += rawDataPointSize, j -= pointerPropertyCount)
                     {
-                        int buttonIndex = i + rawDataPointSize - 1;
+                        Array.Copy(rawPointerData, j, data, i, rawDataPointSize);
 
-                        // The last data point probably has garbage in it, so clear it to store button info
-                        data[buttonIndex] = 0;
+                        // Apply offsets from the origin to raw pointer data here
+                        data[i + StylusPointDescription.RequiredXIndex] -= originOffsetX;
+                        data[i + StylusPointDescription.RequiredYIndex] -= originOffsetY;
 
-                        // Condense any leftover button properties into a single entry
-                        for (int k = tabletDevice.DeviceInfo.SupportedButtonPropertyIndex; k < pointerPropertyCount; k++)
+                        if (numButtons > 0)
                         {
-                            int mask = rawPointerData[j + k] << (k - tabletDevice.DeviceInfo.SupportedButtonPropertyIndex);
-                            data[buttonIndex] |= mask;
+                            int buttonIndex = i + rawDataPointSize - 1;
+
+                            // The last data point probably has garbage in it, so clear it to store button info
+                            data[buttonIndex] = 0;
+
+                            // Condense any leftover button properties into a single entry
+                            for (int k = tabletDevice.DeviceInfo.SupportedButtonPropertyIndex; k < pointerPropertyCount; k++)
+                            {
+                                int mask = rawPointerData[j + k] << (k - tabletDevice.DeviceInfo.SupportedButtonPropertyIndex);
+                                data[buttonIndex] |= mask;
+                            }
                         }
                     }
                 }
+
             }
 
             return data;
@@ -212,12 +221,12 @@ namespace System.Windows.Interop
 
             // Only process touch or pen messages, do not process mouse or touchpad
             if (data.IsValid
-                && (data.Info.pointerType == UnsafeNativeMethods.POINTER_INPUT_TYPE.PT_TOUCH
-                || data.Info.pointerType == UnsafeNativeMethods.POINTER_INPUT_TYPE.PT_PEN))
+                && (data.Info.pointerType == WinPointerType.POINTER_INPUT_TYPE.PT_TOUCH
+                || data.Info.pointerType == WinPointerType.POINTER_INPUT_TYPE.PT_PEN))
             {               
                 uint cursorId = 0;
 
-                if (UnsafeNativeMethods.GetPointerCursorId(pointerId, ref cursorId))
+                if (PInvokeCore.GetPointerCursorId(pointerId, out cursorId))
                 {
                     IntPtr deviceId = data.Info.sourceDevice;
 
@@ -230,8 +239,8 @@ namespace System.Windows.Interop
                                      
                     // Convert move to InAirMove if applicable
                     if (action == RawStylusActions.Move
-                        && (!data.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INCONTACT)
-                        && data.Info.pointerFlags.HasFlag(UnsafeNativeMethods.POINTER_FLAGS.POINTER_FLAG_INRANGE)))
+                        && (!data.Info.pointerFlags.HasFlag(WinPointer.POINTER_FLAGS.POINTER_FLAG_INCONTACT)
+                        && data.Info.pointerFlags.HasFlag(WinPointer.POINTER_FLAGS.POINTER_FLAG_INRANGE)))
                     {
                         action = RawStylusActions.InAirMove;
                     }

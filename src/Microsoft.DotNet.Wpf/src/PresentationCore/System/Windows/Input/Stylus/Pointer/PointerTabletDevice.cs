@@ -1,9 +1,11 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 
 using MS.Win32.Pointer;
+using WinPointer = Windows.Win32.UI.Controls;
+using WinFoundation = Windows.Win32.Foundation;
 
 namespace System.Windows.Input.StylusPointer
 {
@@ -89,24 +91,26 @@ namespace System.Windows.Input.StylusPointer
         /// <summary>
         /// Creates all stylus devices for this specific tablet based on the tracked cursors in WM_POINTER.
         /// </summary>
-        private void BuildStylusDevices()
+        private unsafe void BuildStylusDevices()
         {
             UInt32 cursorCount = 0;
 
             List<PointerStylusDevice> pointerStylusDevices = new List<PointerStylusDevice>();
 
-            if (UnsafeNativeMethods.GetPointerDeviceCursors(_deviceInfo.Device, ref cursorCount, null))
+            if (PInvokeCore.GetPointerDeviceCursors((WinFoundation.HANDLE)_deviceInfo.Device, ref cursorCount, null))
             {
-                UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO[] cursors = new UnsafeNativeMethods.POINTER_DEVICE_CURSOR_INFO[cursorCount];
-
-                if (UnsafeNativeMethods.GetPointerDeviceCursors(_deviceInfo.Device, ref cursorCount, cursors))
+                WinPointer.POINTER_DEVICE_CURSOR_INFO[] cursors = new WinPointer.POINTER_DEVICE_CURSOR_INFO[cursorCount];
+                fixed (WinPointer.POINTER_DEVICE_CURSOR_INFO* pCursorsPtr = cursors)
                 {
-                    foreach (var cursor in cursors)
+                    if (PInvokeCore.GetPointerDeviceCursors((WinFoundation.HANDLE)_deviceInfo.Device, ref cursorCount, pCursorsPtr))
                     {
-                        PointerStylusDevice stylus = new PointerStylusDevice(this, cursor);
+                        foreach (var cursor in cursors)
+                        {
+                            PointerStylusDevice stylus = new PointerStylusDevice(this, cursor);
 
-                        _stylusDeviceMap.Add(stylus.CursorId, stylus);
-                        pointerStylusDevices.Add(stylus);
+                            _stylusDeviceMap.Add(stylus.CursorId, stylus);
+                            pointerStylusDevices.Add(stylus);
+                        }
                     }
                 }
             }

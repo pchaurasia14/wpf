@@ -1,9 +1,10 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 
 using System.Runtime.InteropServices;
+using WinInputPointer = Windows.Win32.UI.Input.Pointer;
 
 namespace MS.Win32.Pointer
 {
@@ -515,7 +516,7 @@ namespace MS.Win32.Pointer
         #region Imports
 
         #region WM_POINTER
-
+/*
         /// <summary>
         /// Gets the list of pointer devices currently installed on the system. Analogous to TabletDevice for WPF.
         /// </summary>
@@ -575,7 +576,7 @@ namespace MS.Win32.Pointer
         /// </summary>
         [DllImport(DllImport.User32, EntryPoint = "GetRawPointerDeviceData", SetLastError = true)]
         internal static extern bool GetRawPointerDeviceData([In] UInt32 pointerId, [In] UInt32 historyCount, [In] UInt32 propertiesCount, [In] POINTER_DEVICE_PROPERTY[] pProperties, [In, Out] int[] pValues);
-
+*/
         #endregion
 
         #region Interaction
@@ -636,6 +637,15 @@ namespace MS.Win32.Pointer
         /// <param name="pointerInfo"></param>
         [DllImport(DllImport.NInput, EntryPoint = "BufferPointerPacketsInteractionContext", SetLastError = true, PreserveSig = false)]
         internal static extern void BufferPointerPacketsInteractionContext([In] IntPtr interactionContext, [In] UInt32 entriesCount, [In] POINTER_INFO[] pointerInfo);
+
+        /// <summary>
+        /// Adds a WM_POINTER POINTER_INFO structure to the buffer of unprocessed WM_POINTER messages waiting
+        /// </summary>
+        /// <param name="interactionContext"></param>
+        /// <param name="entriesCount"></param>
+        /// <param name="pointerInfo"></param>
+        [DllImport(DllImport.NInput, EntryPoint = "BufferPointerPacketsInteractionContext", SetLastError = true, PreserveSig = false)]
+        internal static extern void BufferPointerPacketsInteractionContext([In] IntPtr interactionContext, [In] UInt32 entriesCount, [In] WinInputPointer.POINTER_INFO[] pointerInfo);
 
         /// <summary>
         /// Forces processing of the buffered WM_POINTER messages.
